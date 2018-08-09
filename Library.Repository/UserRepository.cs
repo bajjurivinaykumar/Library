@@ -31,13 +31,39 @@ namespace Library.Repository
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
+                userObj.userId = (int)reader["userId"];
                 userObj.name =(string) reader["Name"];
-
+                userObj.address = (string)reader["address"];
+                userObj.username = (string)reader["username"];
+                userObj.roleId = (int)reader["roleId"];
+                userObj.IssuedNumberBooks = (int)reader["IssuedNumberBooks"];
+                
             }
             conn.Close();
             return userObj;
 
                       
+        }
+        public bool RemoveUser(int userId)
+        {
+            int success;
+            try
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand("delete from users where userId = " + userId);
+                command.Connection = conn;
+                success = command.ExecuteNonQuery();
+                conn.Close();
+                if (success > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+            
         }
         public bool AddUser(User user)
         {
@@ -48,7 +74,8 @@ namespace Library.Repository
                     "(\'" + user.name + "\'," + user.roleId + ",\'" + user.address + "\',\'" + user.username + "\',\'" + user.Password + "\',getdate(),0);");
                 command.Connection = conn;
                 int success = command.ExecuteNonQuery();
-                
+                conn.Close();
+
             }
             catch (Exception ex)
             {

@@ -3,15 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Library.BusinessObjects;
 
 namespace Library.Services
 {
-    interface IUserService
+    class Class1
     {
-        bool AddUser(User user);
-        bool RemoveUser(int userId);
-        User GetUser(int userId);
-
     }
 }

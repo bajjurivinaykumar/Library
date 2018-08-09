@@ -22,6 +22,7 @@ namespace Library.ApplicationConsole
             u.username = "vinay";
             u.userId = 5;
            us.AddUser(u);
+            us.RemoveUser(1);
 
         }
     }

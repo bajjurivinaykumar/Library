@@ -16,14 +16,12 @@ namespace Library.Services
        public bool  AddUser(User user) {
 
            return urep.AddUser(user);
-          
-
-            
+                   
         }
 
 
-       public int RemoveUser(int userId) {
-           return 0;
+       public bool RemoveUser(int userId) {
+           return urep.RemoveUser(userId);
        }
        
        public User GetUser(int userId)

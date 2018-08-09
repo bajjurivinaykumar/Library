@@ -39,7 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorizationService.cs" />
     <Compile Include="BookService.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="IBookService.cs" />
     <Compile Include="IUserService.cs" />
