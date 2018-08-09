@@ -41,7 +41,6 @@
   <ItemGroup>
     <Compile Include="AuthorizationService.cs" />
     <Compile Include="BookService.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="IBookService.cs" />
     <Compile Include="IUserService.cs" />
@@ -58,6 +57,9 @@
       <Project>{17d41499-ad7d-4848-81dd-3ecd11cd040a}</Project>
       <Name>Library.Repository</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Permissions.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

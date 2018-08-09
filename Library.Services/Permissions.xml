@@ -1,0 +1,26 @@
+<Authentication>
+
+  <Role name="Student">
+    <Permission>SearchBook</Permission> 
+    <Permission>RequestBook</Permission>
+    <Permission>ReturnBook</Permission>
+  </Role>
+  
+   
+  <Role name="librarian">
+	  <Permission>SearchBook</Permission>
+    <Permission>ManageBook</Permission>
+    <Permission>IssueBook</Permission>	 
+	  <Permission>RequestBook</Permission>
+    <Permission>ReturnBook</Permission>
+	</Role>
+
+  <Role name="Staff">
+    <Permission>SearchBook</Permission>
+    <Permission>RequestBook</Permission>
+    <Permission>ReturnBook</Permission>
+  </Role>
+
+</Authentication>	
+
+    
