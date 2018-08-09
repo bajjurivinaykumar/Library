@@ -1,0 +1,10 @@
+C:\Users\vinayb.CAMPSYS\documents\visual studio 2012\Projects\ClassLibrary1\LibraryBusinessLayer\bin\Debug\Library.BusinessObjects.dll
+C:\Users\vinayb.CAMPSYS\documents\visual studio 2012\Projects\ClassLibrary1\LibraryBusinessLayer\bin\Debug\Library.BusinessObjects.pdb
+C:\Users\vinayb.CAMPSYS\documents\visual studio 2012\Projects\ClassLibrary1\LibraryBusinessLayer\obj\Debug\Library.BusinessObjects.csprojResolveAssemblyReference.cache
+C:\Users\vinayb.CAMPSYS\documents\visual studio 2012\Projects\ClassLibrary1\LibraryBusinessLayer\obj\Debug\Library.BusinessObjects.dll
+C:\Users\vinayb.CAMPSYS\documents\visual studio 2012\Projects\ClassLibrary1\LibraryBusinessLayer\obj\Debug\Library.BusinessObjects.pdb
+C:\Users\vinayb.CAMPSYS\Documents\visual studio 2012\Projects\Library\Library.BusinessObjects\bin\Debug\Library.BusinessObjects.dll
+C:\Users\vinayb.CAMPSYS\Documents\visual studio 2012\Projects\Library\Library.BusinessObjects\bin\Debug\Library.BusinessObjects.pdb
+C:\Users\vinayb.CAMPSYS\Documents\visual studio 2012\Projects\Library\Library.BusinessObjects\obj\Debug\Library.BusinessObjects.csprojResolveAssemblyReference.cache
+C:\Users\vinayb.CAMPSYS\Documents\visual studio 2012\Projects\Library\Library.BusinessObjects\obj\Debug\Library.BusinessObjects.dll
+C:\Users\vinayb.CAMPSYS\Documents\visual studio 2012\Projects\Library\Library.BusinessObjects\obj\Debug\Library.BusinessObjects.pdb

@@ -1,0 +1,5 @@
+c:\users\vinayb.campsys\documents\visual studio 2012\Projects\ClassLibrary1\LibraryBusinessLayer\bin\Debug\LibraryBusinessLayer.dll
+c:\users\vinayb.campsys\documents\visual studio 2012\Projects\ClassLibrary1\LibraryBusinessLayer\bin\Debug\LibraryBusinessLayer.pdb
+c:\users\vinayb.campsys\documents\visual studio 2012\Projects\ClassLibrary1\LibraryBusinessLayer\obj\Debug\LibraryBusinessObjects.csprojResolveAssemblyReference.cache
+c:\users\vinayb.campsys\documents\visual studio 2012\Projects\ClassLibrary1\LibraryBusinessLayer\obj\Debug\LibraryBusinessLayer.dll
+c:\users\vinayb.campsys\documents\visual studio 2012\Projects\ClassLibrary1\LibraryBusinessLayer\obj\Debug\LibraryBusinessLayer.pdb

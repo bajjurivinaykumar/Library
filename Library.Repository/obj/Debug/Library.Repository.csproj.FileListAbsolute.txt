@@ -1,0 +1,12 @@
+C:\Users\vinayb.CAMPSYS\documents\visual studio 2012\Projects\ClassLibrary1\ClassLibrary1\bin\Debug\Library.Repository.dll
+C:\Users\vinayb.CAMPSYS\documents\visual studio 2012\Projects\ClassLibrary1\ClassLibrary1\bin\Debug\Library.Repository.pdb
+C:\Users\vinayb.CAMPSYS\documents\visual studio 2012\Projects\ClassLibrary1\ClassLibrary1\obj\Debug\Library.Repository.csprojResolveAssemblyReference.cache
+C:\Users\vinayb.CAMPSYS\documents\visual studio 2012\Projects\ClassLibrary1\ClassLibrary1\obj\Debug\Library.Repository.dll
+C:\Users\vinayb.CAMPSYS\documents\visual studio 2012\Projects\ClassLibrary1\ClassLibrary1\obj\Debug\Library.Repository.pdb
+C:\Users\vinayb.CAMPSYS\Documents\visual studio 2012\Projects\Library\Library.Repository\obj\Debug\Library.Repository.csprojResolveAssemblyReference.cache
+C:\Users\vinayb.CAMPSYS\Documents\visual studio 2012\Projects\Library\Library.Repository\obj\Debug\Library.Repository.dll
+C:\Users\vinayb.CAMPSYS\Documents\visual studio 2012\Projects\Library\Library.Repository\obj\Debug\Library.Repository.pdb
+C:\Users\vinayb.CAMPSYS\Documents\visual studio 2012\Projects\Library\Library.Repository\bin\Debug\Library.Repository.dll
+C:\Users\vinayb.CAMPSYS\Documents\visual studio 2012\Projects\Library\Library.Repository\bin\Debug\Library.Repository.pdb
+C:\Users\vinayb.CAMPSYS\Documents\visual studio 2012\Projects\Library\Library.Repository\bin\Debug\Library.BusinessObjects.dll
+C:\Users\vinayb.CAMPSYS\Documents\visual studio 2012\Projects\Library\Library.Repository\bin\Debug\Library.BusinessObjects.pdb
