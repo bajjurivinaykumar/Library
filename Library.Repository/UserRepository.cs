@@ -13,7 +13,7 @@ namespace Library.Repository
 {
     public class UserRepository
     {
-        SqlConnection conn = new SqlConnection("Data Source=PremierDBDev1;Initial Catalog=Library;Pooling=true;Min Pool Size = 1;Max Pool Size=100;Integrated Security=False;Persist Security Info=False;user id=sa;password=$elf!h0st;Connect Timeout=300");
+        SqlConnection conn = new SqlConnection  ("Data Source=PremierDBDev1;Initial Catalog=Library;Pooling=true;Min Pool Size = 1;Max Pool Size=100;Integrated Security=False;Persist Security Info=False;user id=sa;password=$elf!h0st;Connect Timeout=300");
         /* Connection con = new Connection();
         OracleConnection Oracleconn = new OracleConnection("Data Source=(DESCRIPTION="
              + "(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=nydb37.campsys.com)(PORT=1521)))"
