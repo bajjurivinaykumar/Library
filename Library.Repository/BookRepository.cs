@@ -13,27 +13,67 @@ namespace Library.Repository
     {
         SqlConnection conn = new SqlConnection("Data Source=PremierDBDev1;Initial Catalog=Library;Pooling=true;Min Pool Size = 1;Max Pool Size=100;Integrated Security=False;Persist Security Info=False;user id=sa;password=$elf!h0st;Connect Timeout=300");
 
-        Book userObj = new Book();
-        public Book SearchBook(int Bookid)
+        Book Bookobj = new Book();
+        public Book SearchBookbyName(String Name)
         {
 
 
             conn.Open();
-            SqlCommand command = new SqlCommand("select * from users where Bookid = " + Bookid);
+            SqlCommand command = new SqlCommand("select * from Books where Name = '" +  Name+"'" );
             command.Connection = conn;
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                userObj.bookName = (string)reader["Name"];
+                Bookobj.Name = (string)reader["Name"];
+               
 
             }
             conn.Close();
-            return userObj;
+            return Bookobj;
 
         }
 
-        public bool AddBook(Book Book)
+        public Book SearchByPublishedBy(String PublishedBy)
         {
+            conn.Open();
+            SqlCommand command = new SqlCommand("Select * from Books where PublishedBy='" + PublishedBy+"'");
+            command.Connection = conn;
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Bookobj.PublishedBy = (String)reader["PublishedBy"];
+            }
+            conn.Close();
+            return Bookobj;
+
+            
+
+
+        }
+
+        public bool AddBook(Book book)
+        {
+            conn.Open();
+            SqlCommand Command = new SqlCommand("Insert into Books(name,PublishedBy,Price)Values(\' " + book.Name + "\'," +
+                "\'" + book.PublishedBy + "\'," + book.price +")");
+            Command.Connection = conn;
+            int Success=Command.ExecuteNonQuery();
+            if (Success > 0)
+                {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+
+
+
+
+
             return false;
         }
 }

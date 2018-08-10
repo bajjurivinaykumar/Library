@@ -4,22 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Library.BusinessObjects;
+using Library.Repository;
 
 
 namespace Library.Services
 {
     public class BookService : IBookService
     {
-        public Book AddBook()
+        BookRepository Br = new BookRepository();
+        public bool AddBook(Book book)
         {
-            return new Book();
+            return Br.AddBook(book);
         }
         public Book ManageBooks() {
             return new Book();
         }
-        public Book SearchBook() {
-         return new Book();}
+        public Book SearchBookByName(String Name)
+        {
+         return Br.SearchBookbyName(Name);
+        }
 
+        public Book SearchBookByPublishedBy(String PublishedBy)
+        {
+            return Br.SearchByPublishedBy(PublishedBy);
+        }
+        
 
     }
 }
