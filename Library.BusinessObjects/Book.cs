@@ -10,7 +10,7 @@ namespace Library.BusinessObjects
     {
         public long bookId { get; set; }
         public string Name { get; set; }
-        public string author { get; set; }
+        public string PublishedBy { get; set; }
         public string publisher { get; set; }
         public int price { get; set; }
         public DateTime dateOfPurchase { get; set; }

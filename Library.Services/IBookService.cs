@@ -10,9 +10,14 @@ namespace Library.Services
 {
     interface IBookService
     {
-         Book AddBook();
+         bool AddBook(Book book);
          Book ManageBooks();
-         Book SearchBook(string Name);
+         Book SearchBookByPublishedBy(String PublishedBy);
+         Book SearchBookByName(String Name);
+
+         bool EditQuantity(int  BookID, int Quantity);
+
+         bool DeleteBook(int BookID);
 
     }
 }

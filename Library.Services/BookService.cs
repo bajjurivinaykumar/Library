@@ -11,18 +11,33 @@ namespace Library.Services
 {
     public class BookService : IBookService
     {
-        BookRepository brep = new BookRepository();
-        public Book AddBook()
+        BookRepository Br = new BookRepository();
+        public bool AddBook(Book book)
         {
-            return new Book();
+            return Br.AddBook(book);
         }
         public Book ManageBooks() {
             return new Book();
         }
-        public Book SearchBook(string name) {
-            return brep.SearchBook(name);
+        public Book SearchBookByName(String Name)
+        {
+         return Br.SearchBookbyName(Name);
+        }
+
+        public Book SearchBookByPublishedBy(String PublishedBy)
+        {
+            return Br.SearchByPublishedBy(PublishedBy);
+        }
+
+        public bool EditQuantity(int bookID, int Quantity)
+        {
+            return Br.EditQuantity(bookID, Quantity);
         }
 
 
+        public bool DeleteBook(int bookID)
+        {
+            return Br.DeletBook(bookID);
+        }
     }
 }
