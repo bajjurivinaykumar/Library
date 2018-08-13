@@ -15,5 +15,9 @@ namespace Library.Services
          Book SearchBookByPublishedBy(String PublishedBy);
          Book SearchBookByName(String Name);
 
+         bool EditQuantity(int  BookID, int Quantity);
+
+         bool DeleteBook(int BookID);
+
     }
 }

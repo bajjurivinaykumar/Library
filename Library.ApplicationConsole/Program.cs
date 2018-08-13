@@ -15,8 +15,8 @@ namespace Library.ApplicationConsole
             
 
             BookService Bs = new BookService();
-           
-            var data = Bs.SearchBookByName("Harry");
+
+            var data = Bs.EditQuantity(2, 10);
 
 
 

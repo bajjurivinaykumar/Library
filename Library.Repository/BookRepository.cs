@@ -70,11 +70,45 @@ namespace Library.Repository
 
 
 
+          
+        }
 
 
 
+        public bool EditQuantity(int bookID, int Quantity)
+        {
+            conn.Open();
+            SqlCommand Command= new SqlCommand("Update Books set Quantity= " + Quantity + "  where Bookid= "+bookID+"");
+            Command.Connection = conn;
+            int Success = Command.ExecuteNonQuery();
+            if (Success > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-            return false;
+
+        public bool DeletBook(int bookid)
+        {
+            conn.Open();
+            SqlCommand Command = new SqlCommand("Delete from Books where Bookid=" + bookid + "");
+            Command.Connection = conn;
+            int Success = Command.ExecuteNonQuery();
+            if (Success > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+
         }
 }
 }

@@ -28,7 +28,16 @@ namespace Library.Services
         {
             return Br.SearchByPublishedBy(PublishedBy);
         }
-        
 
+        public bool EditQuantity(int bookID, int Quantity)
+        {
+            return Br.EditQuantity(bookID, Quantity);
+        }
+
+
+        public bool DeleteBook(int bookID)
+        {
+            return Br.DeletBook(bookID);
+        }
     }
 }
