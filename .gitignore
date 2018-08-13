@@ -4,3 +4,6 @@
 
 /.vs/Library/v15
 /Library.Services/obj/Debug/Library.Services.csproj.CoreCompileInputs.cache
+/Library.CORE/bin/Debug
+/Library.CORE/obj/Debug
+/Library.Services/obj/Debug

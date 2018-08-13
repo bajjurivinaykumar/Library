@@ -1,29 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Linq;
-using System.Xml.Serialization;
-using Library.BusinessObjects;
+﻿using Library.BusinessObjects;
 using System.IO;
-
+using System.Linq;
+using System.Xml.Serialization;
 
 namespace Library.Services
 {
-    class AuthorizationService
+    internal class AuthorizationService
     {
-        public bool Authorize(string userType,string permission)
+        private static Authentication permissionList;
+
+        public bool Authorize(string userType, string permission)
         {
-            XmlSerializer ser = new XmlSerializer(typeof(Authentication));
-
-            StreamReader reader = new StreamReader("Permissions.xml");
-            var data = (Authentication)ser.Deserialize(reader);
-             return data.Role.Where(r => r.name == userType).SingleOrDefault().Permission.Contains(permission);
-
+            if (permissionList == null)
+            {
+                ReadXML();
+            }
+            return permissionList.Role.Where(r => r.name == userType).SingleOrDefault().Permission.Contains(permission);
         }
 
+        private void ReadXML()
+        {
+            XmlSerializer ser = new XmlSerializer(typeof(Authentication));
+            StreamReader reader = new StreamReader("Permissions.xml");
+            permissionList = (Authentication)ser.Deserialize(reader);
+        }
     }
 }
-

@@ -13,16 +13,12 @@ namespace Library.ApplicationConsole
         static void Main(string[] args)
         {
             UserService us = new UserService();
-            User u = new User();
-            u.address = "Kondapur";
-            
-            u.name = "vinay";
-            u.Password = "test";
-            u.roleId = 1;
-            u.username = "vinay";
-            u.userId = 5;
-           us.AddUser(u);
-            us.RemoveUser(1);
+            BookService bs = new BookService();
+            TransactionService ts = new TransactionService();
+            User u = us.GetUser(8);
+            Book b = bs.SearchBook("Harrypotter");
+            ts.IssueBook(u, b);
+           
 
         }
     }

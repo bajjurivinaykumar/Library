@@ -12,7 +12,7 @@ namespace Library.Services
     {
          Book AddBook();
          Book ManageBooks();
-         Book SearchBook();
+         Book SearchBook(string Name);
 
     }
 }

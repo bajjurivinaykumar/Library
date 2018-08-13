@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Library.Repository;
 using Library.BusinessObjects;
+using Library.CORE;
 
 
 namespace Library.Services
@@ -12,10 +13,12 @@ namespace Library.Services
    public  class UserService : IUserService
     {
        UserRepository urep = new UserRepository();
-       
-       public bool  AddUser(User user) {
+        int userId = System.Threading.Thread.CurrentPrincipal.GetLoggedInUser().userId;
 
-           return urep.AddUser(user);
+        public bool  AddUser(User newUser) {
+
+
+           return urep.AddUser(newUser);
                    
         }
 
