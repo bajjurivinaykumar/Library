@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Library.BusinessObjects;
 using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-using Library.BusinessObjects;
 
-namespace Library.CORE
+namespace Library.core
 {
     public static class PrincipalExtension
     {
@@ -15,7 +10,8 @@ namespace Library.CORE
             return new User()
             {
                 name = "VINAY",
-                userId = 8
+                userId = 8,
+                roleName = "Student"
             };
         }
     }

@@ -16,6 +16,7 @@ namespace Library.BusinessObjects
         public int roleId { get; set; }
         public int IssuedNumberBooks { get; set; }
         public DateTime createdOn { get; set; }
+        public string roleName { get; set; }
 
     }
 }

@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="BookRepository.cs" />
     <Compile Include="Connection.cs" />
+    <Compile Include="IBookRepository.cs" />
+    <Compile Include="ITransactionRepository.cs" />
+    <Compile Include="IUserRepository.cs" />
     <Compile Include="TransactionRepository.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

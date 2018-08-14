@@ -5,7 +5,7 @@ namespace Library.Services
 {
     public class TransactionService : ITransactionService
     {
-        private TransactionRepository trep = new TransactionRepository();
+        public TransactionRepository trep = new TransactionRepository();
 
         public bool IssueBook(User u, Book b)
         {

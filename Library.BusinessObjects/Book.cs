@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Library.BusinessObjects.enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace Library.BusinessObjects
         public int price { get; set; }
         public DateTime dateOfPurchase { get; set; }
         public int Quantity { get; set; }
+        public BookType bookType { get; set; }
 
     }
 }

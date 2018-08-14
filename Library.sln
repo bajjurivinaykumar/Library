@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Services", "Library
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.ApplicationConsole", "Library.ApplicationConsole\Library.ApplicationConsole.csproj", "{D5EAC2C8-D5F4-42C1-A165-F6BD0A58DD01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.CORE", "Library.CORE\Library.CORE.csproj", "{08D3075F-580B-42AF-9AD9-886E75F1A6A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.core", "Library.CORE\Library.core.csproj", "{08D3075F-580B-42AF-9AD9-886E75F1A6A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

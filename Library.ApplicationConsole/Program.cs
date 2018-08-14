@@ -16,7 +16,8 @@ namespace Library.ApplicationConsole
             BookService bs = new BookService();
             TransactionService ts = new TransactionService();
             User u = us.GetUser(8);
-            Book b = bs.SearchBook("Harrypotter");
+            Book b = bs.SearchBookByName("Harrypotter");
+            b.bookType = BusinessObjects.enums.BookType.ActionandAdventures;
             ts.IssueBook(u, b);
            
 

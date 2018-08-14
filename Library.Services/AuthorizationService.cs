@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 namespace Library.Services
 {
-    internal class AuthorizationService
+    public class AuthorizationService
     {
         private static Authentication permissionList;
 
