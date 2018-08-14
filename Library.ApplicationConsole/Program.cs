@@ -12,11 +12,20 @@ namespace Library.ApplicationConsole
     {
         static void Main(string[] args)
         {
-            
+
+
+            //BookService Bs = new BookService();
+
+            //var data = Bs.EditQuantity(2, 10);
 
             BookService Bs = new BookService();
-
-            var data = Bs.EditQuantity(2, 10);
+            UserService us = new UserService();
+            TransactionService ts = new TransactionService();
+            User user = us.GetUser(10);
+            Book book = Bs.SearchBookByName(" Harry");
+           ts.IssueBook(user, book);
+            ts.ReturnBook(9, book);
+            
 
 
 

@@ -17,6 +17,7 @@ namespace Library.Repository
         public Book SearchBookbyName(String Name)
         {
 
+            
 
             conn.Open();
             SqlCommand command = new SqlCommand("select * from Books where Name = '" +  Name+"'" );
@@ -25,7 +26,8 @@ namespace Library.Repository
             while (reader.Read())
             {
                 Bookobj.Name = (string)reader["Name"];
-               
+                Bookobj.Quantity = (int)reader["Quantity"];
+                Bookobj.bookId = (int)reader["bookId"];
 
             }
             conn.Close();
@@ -35,6 +37,8 @@ namespace Library.Repository
 
         public Book SearchByPublishedBy(String PublishedBy)
         {
+
+           
             conn.Open();
             SqlCommand command = new SqlCommand("Select * from Books where PublishedBy='" + PublishedBy+"'");
             command.Connection = conn;
@@ -81,6 +85,7 @@ namespace Library.Repository
             SqlCommand Command= new SqlCommand("Update Books set Quantity= " + Quantity + "  where Bookid= "+bookID+"");
             Command.Connection = conn;
             int Success = Command.ExecuteNonQuery();
+            conn.Close();
             if (Success > 0)
             {
                 return true;
@@ -92,7 +97,7 @@ namespace Library.Repository
         }
 
 
-        public bool DeletBook(int bookid)
+        public bool DeleteBook(int bookid)
         {
             conn.Open();
             SqlCommand Command = new SqlCommand("Delete from Books where Bookid=" + bookid + "");

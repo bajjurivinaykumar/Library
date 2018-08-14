@@ -14,12 +14,7 @@ namespace Library.Repository
     public class UserRepository
     {
         SqlConnection conn = new SqlConnection("Data Source=PremierDBDev1;Initial Catalog=Library;Pooling=true;Min Pool Size = 1;Max Pool Size=100;Integrated Security=False;Persist Security Info=False;user id=sa;password=$elf!h0st;Connect Timeout=300");
-        /* Connection con = new Connection();
-        OracleConnection Oracleconn = new OracleConnection("Data Source=(DESCRIPTION="
-             + "(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=nydb37.campsys.com)(PORT=1521)))"
-             + "(CONNECT_DATA=(SERVER=DEDICATED)(SID=teamgqa)));"
-             + "User Id=appuser;Password=hillary;");
-        */
+       
         User userObj = new User();
         public User GetUser(int userId)
         {
@@ -32,6 +27,7 @@ namespace Library.Repository
             while (reader.Read())
             {
                 userObj.name =(string) reader["Name"];
+                userObj.userId = (int)reader["userId"];
 
             }
             conn.Close();

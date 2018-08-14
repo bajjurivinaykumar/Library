@@ -19,7 +19,7 @@ namespace Library.Services
         public Book ManageBooks() {
             return new Book();
         }
-        public Book SearchBookByName(String Name)
+        public Book SearchBookByName(string Name)
         {
          return Br.SearchBookbyName(Name);
         }
@@ -37,7 +37,7 @@ namespace Library.Services
 
         public bool DeleteBook(int bookID)
         {
-            return Br.DeletBook(bookID);
+            return Br.DeleteBook(bookID);
         }
     }
 }
