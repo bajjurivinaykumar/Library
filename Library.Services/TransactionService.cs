@@ -1,25 +1,34 @@
-﻿using Library.BusinessObjects;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Library.BusinessObjects;
 using Library.Repository;
 
 namespace Library.Services
 {
     public class TransactionService : ITransactionService
     {
-        public TransactionRepository trep = new TransactionRepository();
+        private TransactionRepository trep = new TransactionRepository();
 
-        public bool IssueBook(User u, Book b)
+        public bool IssueBook(User user, Book book)
         {
-            if (b.Quantity > 0)
-                return trep.IssueBook(u, b);
+            if (book.Quantity > 0)
+                return trep.IssueBook(user, book);
             else return false;
         }
 
-        public void ReturnBook()
-        {
+        public bool ReturnBook(int userid, Book book)
+                    {
+
+            return trep.ReturnBook( userid, book);
         }
 
-        public void RenewBook()
+        public bool RenewBook(int userId, Book book)
+
         {
+            return trep.RenewBook();
         }
 
         public void DeleteTransaction()

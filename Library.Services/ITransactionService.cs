@@ -14,8 +14,8 @@ namespace Library.Services
         void CalculateFine();
         void PayBill();
         bool IssueBook(User u, Book b);
-        void ReturnBook();
-        void RenewBook();
+        bool ReturnBook(int userid, Book book);
+        bool RenewBook(int UserId,Book book);
 
     }
 }
