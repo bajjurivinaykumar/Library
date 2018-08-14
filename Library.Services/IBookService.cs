@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Library.Services
 {
-    interface IBookService
+    public interface IBookService
     {
          bool AddBook(Book book);
          Book ManageBooks();
-         Book SearchBookByPublishedBy(String PublishedBy);
-         Book SearchBookByName(String Name);
+         Book SearchBookByPublishedBy(string PublishedBy);
+         Book SearchBookByName(string Name);
 
          bool EditQuantity(int  BookID, int Quantity);
 

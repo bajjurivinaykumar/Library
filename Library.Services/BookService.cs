@@ -12,33 +12,42 @@ namespace Library.Services
 {
     public class BookService : IBookService
     {
-        BookRepository Br = new BookRepository();
+        
+        private IBookRepository _bookRepository;
+
+        public BookService(IBookRepository bookRepository)
+
+        {
+            _bookRepository = bookRepository;
+        }
+        
+        //BookRepository bookRepository = new BookRepository();
         public bool AddBook(Book book)
         {
-            return Br.AddBook(book);
+            return _bookRepository.AddBook(book);
         }
         public Book ManageBooks() {
             return new Book();
         }
-        public Book SearchBookByName(string Name)
+        public Book SearchBookByName(string name)
         {
-         return Br.SearchBookbyName(Name);
+         return _bookRepository.SearchBookByName(name);
         }
 
         public Book SearchBookByPublishedBy(String PublishedBy)
         {
-            return Br.SearchByPublishedBy(PublishedBy);
+            return _bookRepository.SearchByPublishedBy(PublishedBy);
         }
 
         public bool EditQuantity(int bookID, int Quantity)
         {
-            return Br.EditQuantity(bookID, Quantity);
+            return _bookRepository.EditQuantity(bookID, Quantity);
         }
 
 
         public bool DeleteBook(int bookID)
         {
-            return Br.DeleteBook(bookID);
+            return _bookRepository.DeleteBook(bookID);
         }
     }
 }

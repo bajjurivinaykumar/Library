@@ -14,20 +14,18 @@ namespace Library.Repository
         SqlConnection conn = new SqlConnection("Data Source=PremierDBDev1;Initial Catalog=Library;Pooling=true;Min Pool Size = 1;Max Pool Size=100;Integrated Security=False;Persist Security Info=False;user id=sa;password=$elf!h0st;Connect Timeout=300");
 
         Book Bookobj = new Book();
-        public Book SearchBookbyName(String Name)
-        {
-
-            
+        public Book SearchBookByName(string name)
+        {        
 
             conn.Open();
-            SqlCommand command = new SqlCommand("select * from Books where Name = '" +  Name+"'" );
+            SqlCommand command = new SqlCommand("select * from Books where Name = '" +  name+"'" );
             command.Connection = conn;
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 Bookobj.Name = (string)reader["Name"];
                 Bookobj.Quantity = (int)reader["Quantity"];
-                Bookobj.bookId = (int)reader["bookId"];
+                Bookobj.BookId = (int)reader["bookId"];
 
             }
             conn.Close();

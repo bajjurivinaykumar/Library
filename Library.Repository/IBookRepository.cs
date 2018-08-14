@@ -7,12 +7,13 @@ using Library.BusinessObjects;
 
 namespace Library.Repository
 {
-    interface IBookRepository
+    public interface IBookRepository
     {
         Book SearchByPublishedBy(String PublishedBy);
         bool AddBook(Book book);
         bool EditQuantity(int bookID, int Quantity);
-        bool DeletBook(int bookid);
+        bool DeleteBook(int bookid);
+        Book SearchBookByName(string name);
 
 
     }

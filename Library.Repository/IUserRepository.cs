@@ -7,7 +7,7 @@ using Library.BusinessObjects;
 
 namespace Library.Repository
 {
-    interface IUserRepository
+    public interface IUserRepository
     {
         User GetUser(int userId);
         bool RemoveUser(int userId);

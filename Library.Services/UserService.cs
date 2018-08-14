@@ -13,14 +13,20 @@ namespace Library.Services
 {
    public  class UserService : IUserService
     {
-       UserRepository urep = new UserRepository();
+        private IUserRepository _userRepository;
+
+        public UserService(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
+      // UserRepository urep = new UserRepository();
         AuthorizationService as1= new AuthorizationService();
         User loggedInUser = System.Threading.Thread.CurrentPrincipal.GetLoggedInUser();
         
         public bool  AddUser(User newUser) {
 
             if (as1.Authorize(loggedInUser.roleName, "AddUser"))
-                return urep.AddUser(newUser);
+                return _userRepository.AddUser(newUser);
             else
             return false;
                    
@@ -29,13 +35,13 @@ namespace Library.Services
 
 
        public bool RemoveUser(int userId) {
-           return urep.RemoveUser(userId);
+           return _userRepository.RemoveUser(userId);
        }
        
        public User GetUser(int userId)
        {
            
-           return urep.GetUser(userId);
+           return _userRepository.GetUser(userId);
        }
       
       

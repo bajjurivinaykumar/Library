@@ -28,7 +28,7 @@ namespace Library.Services
         public bool RenewBook(int userId, Book book)
 
         {
-            return trep.RenewBook();
+            return trep.RenewBook(userId,book);
         }
 
         public void DeleteTransaction()

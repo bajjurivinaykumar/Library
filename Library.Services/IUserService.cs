@@ -7,7 +7,7 @@ using Library.BusinessObjects;
 
 namespace Library.Services
 {
-    interface IUserService
+   public interface IUserService
     {
         bool AddUser(User user);
         bool RemoveUser(int userId);

@@ -21,7 +21,7 @@ namespace Library.Repository
             try
             {
                 conn.Open();
-                SqlCommand command = new SqlCommand("insert into [Transaction] (UserId, BookId, IssuedOn,status,Duedate) values (" + user.userId + "," + book.bookId + ", getdate(),0,dateadd(Month,1,getdate()))");
+                SqlCommand command = new SqlCommand("insert into [Transaction] (UserId, BookId, IssuedOn,status,Duedate) values (" + user.userId + "," + book.BookId + ", getdate(),0,dateadd(Month,1,getdate()))");
                 command.Connection = conn;
                 success = command.ExecuteNonQuery();
 
@@ -29,7 +29,7 @@ namespace Library.Repository
 
                 if (success > 0)
                 {
-                    br.EditQuantity(book.bookId, book.Quantity - 1);
+                    br.EditQuantity(book.BookId, book.Quantity - 1);
                     return true;
                 }
                 else
@@ -48,12 +48,12 @@ namespace Library.Repository
             command.Connection = conn;
             command.CommandType = System.Data.CommandType.StoredProcedure;
             command.Parameters.Add(new SqlParameter("@userId", userid));
-            command.Parameters.Add(new SqlParameter("@BookId", book.bookId));
+            command.Parameters.Add(new SqlParameter("@BookId", book.BookId));
             int Success = command.ExecuteNonQuery();
 
             if (Success > 0)
             {
-                br.EditQuantity(book.bookId, book.Quantity + 1);
+                br.EditQuantity(book.BookId, book.Quantity + 1);
 
                 return true;
 
@@ -72,7 +72,7 @@ namespace Library.Repository
             SqlCommand Command = new SqlCommand("Duedate");
             Command.CommandType = System.Data.CommandType.StoredProcedure;
             Command.Parameters.Add(new SqlParameter("@userId", UserID));
-            Command.Parameters.Add(new SqlParameter("@BookId", book.bookId));
+            Command.Parameters.Add(new SqlParameter("@BookId", book.BookId));
 
             Command.Connection = conn;
             int Success = Command.ExecuteNonQuery();
