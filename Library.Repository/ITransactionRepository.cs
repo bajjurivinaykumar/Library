@@ -7,7 +7,7 @@ using Library.BusinessObjects;
 
 namespace Library.Repository
 {
-    interface ITransactionRepository
+    public interface ITransactionRepository
     {
         bool IssueBook(User user, Book book);
 

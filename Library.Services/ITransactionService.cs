@@ -7,7 +7,7 @@ using Library.BusinessObjects;
 
 namespace Library.Services
 {
-    interface ITransactionService
+    public interface ITransactionService
     {
         void DeleteTransaction();
         void DisplayTransaction();

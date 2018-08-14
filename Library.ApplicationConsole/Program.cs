@@ -19,17 +19,17 @@ namespace Library.ApplicationConsole
             UnityContainer unityContainer = new UnityContainer();
             unityContainer.RegisterType<IUserService, UserService>();
             unityContainer.RegisterType<IUserRepository, UserRepository>();
+           
+            unityContainer.RegisterType<IBookService, BookService>();
+            unityContainer.RegisterType<IBookRepository, BookRepository>();
 
-
-            UnityContainer unityContainer1 = new UnityContainer();
-            unityContainer1.RegisterType<IBookService, BookService>();
-          //  unityContainer1.RegisterType<IBookRepository, BookRepository>();
-
+            unityContainer.RegisterType<ITransactionService, TransactionService>();
+            unityContainer.RegisterType<ITransactionRepository, TransactionRepository>();
 
             
-
-
             IUserService userService = unityContainer.Resolve<UserService>();
+            IBookService bookService = unityContainer.Resolve<BookService>();
+            ITransactionService transactionService = unityContainer.Resolve<TransactionService>();
 
            User u= userService.GetUser(10);      
 

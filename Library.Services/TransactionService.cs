@@ -10,6 +10,11 @@ namespace Library.Services
 {
     public class TransactionService : ITransactionService
     {
+        private ITransactionService _transactionService;
+        public TransactionService (ITransactionService transactionService)
+        {
+            _transactionService = transactionService;
+        }
         private TransactionRepository trep = new TransactionRepository();
 
         public bool IssueBook(User user, Book book)

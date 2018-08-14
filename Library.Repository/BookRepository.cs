@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace Library.Repository
 {
-    public class BookRepository
+    public class BookRepository : IBookRepository
     {
         SqlConnection conn = new SqlConnection("Data Source=PremierDBDev1;Initial Catalog=Library;Pooling=true;Min Pool Size = 1;Max Pool Size=100;Integrated Security=False;Persist Security Info=False;user id=sa;password=$elf!h0st;Connect Timeout=300");
 
