@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Library.BusinessObjects;
+﻿using Library.BusinessObjects;
 
 namespace Library.Repository
 {
@@ -11,5 +6,8 @@ namespace Library.Repository
     {
         bool IssueBook(User user, Book book);
 
+        bool ReturnBook(int userid, Book book);
+
+        bool RenewBook(int userID, Book book);
     }
 }

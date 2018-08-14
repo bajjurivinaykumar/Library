@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookRepository.cs" />
-    <Compile Include="Connection.cs" />
     <Compile Include="IBookRepository.cs" />
     <Compile Include="ITransactionRepository.cs" />
     <Compile Include="IUserRepository.cs" />

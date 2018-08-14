@@ -11,7 +11,7 @@ namespace Library.core
             {
                 name = "VINAY",
                 userId = 8,
-                roleName = "Student"
+                roleName = "librarian"
             };
         }
     }

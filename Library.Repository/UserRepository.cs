@@ -1,30 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Library.BusinessObjects;
+using System;
 using System.Data.SqlClient;
-using System.Data.Sql;
-using Library.BusinessObjects;
-using Oracle.DataAccess.Client;
-
 
 namespace Library.Repository
 {
     public class UserRepository : IUserRepository
     {
-        SqlConnection conn = new SqlConnection  ("Data Source=PremierDBDev1;Initial Catalog=Library;Pooling=true;Min Pool Size = 1;Max Pool Size=100;Integrated Security=False;Persist Security Info=False;user id=sa;password=$elf!h0st;Connect Timeout=300");
-        /* Connection con = new Connection();
-        OracleConnection Oracleconn = new OracleConnection("Data Source=(DESCRIPTION="
-             + "(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=nydb37.campsys.com)(PORT=1521)))"
-             + "(CONNECT_DATA=(SERVER=DEDICATED)(SID=teamgqa)));"
-             + "User Id=appuser;Password=hillary;");
-        */
-        User userObj = new User();
-        public User GetUser(int userId)
+        private SqlConnection conn = new SqlConnection("Data Source=PremierDBDev1;Initial Catalog=Library;Pooling=true;Min Pool Size = 1;Max Pool Size=100;Integrated Security=False;Persist Security Info=False;user id=sa;password=$elf!h0st;Connect Timeout=300");
+
+        private User userObj = new User();
+
+        public User GetUserById(int userId)
         {
-            //con.connect();
-            
             conn.Open();
             SqlCommand command = new SqlCommand("select * from users where userid = " + userId);
             command.Connection = conn;
@@ -32,18 +19,46 @@ namespace Library.Repository
             while (reader.Read())
             {
                 userObj.userId = (int)reader["userId"];
-                userObj.name =(string) reader["Name"];
+                userObj.name = (string)reader["name"];
                 userObj.address = (string)reader["address"];
                 userObj.username = (string)reader["username"];
                 userObj.roleId = (int)reader["roleId"];
-                userObj.IssuedNumberBooks = (int)reader["IssuedNumberBooks"];
-                
+                userObj.issuedNumberBooks = (int)reader["issuedNumberBooks"];
             }
             conn.Close();
             return userObj;
-
-                      
         }
+
+        public void GetRole(int userId)
+        {
+            conn.Open();
+            SqlCommand command = new SqlCommand("select rolename from role");
+            command.Connection = conn;
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+            }
+        }
+
+        public User GetUserByName(string name)
+        {
+            conn.Open();
+            SqlCommand command = new SqlCommand("select * from users where username = " + name);
+            command.Connection = conn;
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                userObj.userId = (int)reader["userId"];
+                userObj.name = (string)reader["name"];
+                userObj.address = (string)reader["address"];
+                userObj.username = (string)reader["username"];
+                userObj.roleId = (int)reader["roleId"];
+                userObj.issuedNumberBooks = (int)reader["issuedNumberBooks"];
+            }
+            conn.Close();
+            return userObj;
+        }
+
         public bool RemoveUser(int userId)
         {
             int success;
@@ -59,23 +74,22 @@ namespace Library.Repository
                 else
                     return false;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
-            
         }
+
         public bool AddUser(User user)
         {
             try
             {
                 conn.Open();
                 SqlCommand command = new SqlCommand("insert into users (name,roleId,address,username,password,createdon,IssuedNumberBooks) values " +
-                    "(\'" + user.name + "\'," + user.roleId + ",\'" + user.address + "\',\'" + user.username + "\',\'" + user.Password + "\',getdate(),0);");
+                    "(\'" + user.name + "\'," + user.roleId + ",\'" + user.address + "\',\'" + user.username + "\',\'" + user.password + "\',getdate(),0);");
                 command.Connection = conn;
                 int success = command.ExecuteNonQuery();
                 conn.Close();
-
             }
             catch (Exception ex)
             {

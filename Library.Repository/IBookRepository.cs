@@ -9,10 +9,10 @@ namespace Library.Repository
 {
     public interface IBookRepository
     {
-        Book SearchByPublishedBy(String PublishedBy);
+        Book SearchByPublishedBy(string publishedBy);
         bool AddBook(Book book);
-        bool EditQuantity(int bookID, int Quantity);
-        bool DeleteBook(int bookid);
+        bool EditQuantity(int bookID, int quantity);
+        bool DeleteBook(int bookId);
         Book SearchBookByName(string name);
 
 

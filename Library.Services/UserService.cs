@@ -1,49 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Library.Repository;
-using Library.BusinessObjects;
+﻿using Library.BusinessObjects;
 using Library.core;
-
-
+using Library.Repository;
 
 namespace Library.Services
 {
-   public  class UserService : IUserService
+    public class UserService : IUserService
     {
+        private AuthorizationService as1 = new AuthorizationService();
+        private User loggedInUser = System.Threading.Thread.CurrentPrincipal.GetLoggedInUser();
         private IUserRepository _userRepository;
 
         public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
-      // UserRepository urep = new UserRepository();
-        AuthorizationService as1= new AuthorizationService();
-        User loggedInUser = System.Threading.Thread.CurrentPrincipal.GetLoggedInUser();
-        
-        public bool  AddUser(User newUser) {
 
+        // UserRepository urep = new UserRepository();
+
+        public void GetRole(int userId)
+        {
+            _userRepository.GetRole(userId);
+        }
+
+        public bool AddUser(User newUser)
+        {
             if (as1.Authorize(loggedInUser.roleName, "AddUser"))
                 return _userRepository.AddUser(newUser);
             else
-            return false;
-                   
-            
+                return false;
         }
 
+        public bool RemoveUser(int userId)
+        {
+            if (as1.Authorize(loggedInUser.roleName, "RemoveUser"))
+                return _userRepository.RemoveUser(userId);
+            else
+                return false;
+        }
 
-       public bool RemoveUser(int userId) {
-           return _userRepository.RemoveUser(userId);
-       }
-       
-       public User GetUser(int userId)
-       {
-           
-           return _userRepository.GetUser(userId);
-       }
-      
-      
+        public User GetUserById(int userId)
+        {
+            if (as1.Authorize(loggedInUser.roleName, "GetUser"))
+                return _userRepository.GetUserById(userId);
+            else
+                return null;
+        }
+
+        public User GetUserByName(string name)
+        {
+            if (as1.Authorize(loggedInUser.roleName, "GetUser"))
+                return _userRepository.GetUserByName(name);
+            else
+                return null;
+        }
     }
 }

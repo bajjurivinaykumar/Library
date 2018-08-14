@@ -15,6 +15,7 @@ namespace Library.Services
             {
                 ReadXML();
             }
+
             return permissionList.Role.Where(r => r.name == userType).SingleOrDefault().Permission.Contains(permission);
         }
 

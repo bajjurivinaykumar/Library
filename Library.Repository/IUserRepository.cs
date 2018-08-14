@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Library.BusinessObjects;
+﻿using Library.BusinessObjects;
 
 namespace Library.Repository
 {
     public interface IUserRepository
     {
-        User GetUser(int userId);
+        User GetUserById(int userId);
+
+        User GetUserByName(string name);
+
         bool RemoveUser(int userId);
+
         bool AddUser(User user);
 
+        void GetRole(int userId);
     }
 }

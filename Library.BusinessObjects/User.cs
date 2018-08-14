@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.BusinessObjects
 {
@@ -12,11 +8,10 @@ namespace Library.BusinessObjects
         public string name { get; set; }
         public string address { get; set; }
         public string username { get; set; }
-        public string Password   { get; set; }
+        public string password { get; set; }
         public int roleId { get; set; }
-        public int IssuedNumberBooks { get; set; }
+        public int issuedNumberBooks { get; set; }
         public DateTime createdOn { get; set; }
         public string roleName { get; set; }
-
     }
 }
