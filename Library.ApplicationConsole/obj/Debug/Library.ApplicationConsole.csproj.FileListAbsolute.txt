@@ -11,3 +11,17 @@ C:\Users\vinayb.CAMPSYS\Documents\Visual Studio 2012\Projects\Library\Library.Ap
 C:\Users\vinayb.CAMPSYS\Documents\Visual Studio 2012\Projects\Library\Library.ApplicationConsole\obj\Debug\Library.ApplicationConsole.exe
 C:\Users\vinayb.CAMPSYS\Documents\Visual Studio 2012\Projects\Library\Library.ApplicationConsole\obj\Debug\Library.ApplicationConsole.pdb
 C:\Users\vinayb.CAMPSYS\Documents\Visual Studio 2012\Projects\Library\Library.ApplicationConsole\bin\Debug\Oracle.DataAccess.dll
+C:\Users\vinayb.CAMPSYS\Source\Repos\Library\Library.ApplicationConsole\bin\Debug\Library.ApplicationConsole.exe.config
+C:\Users\vinayb.CAMPSYS\Source\Repos\Library\Library.ApplicationConsole\bin\Debug\Library.ApplicationConsole.exe
+C:\Users\vinayb.CAMPSYS\Source\Repos\Library\Library.ApplicationConsole\bin\Debug\Library.ApplicationConsole.pdb
+C:\Users\vinayb.CAMPSYS\Source\Repos\Library\Library.ApplicationConsole\bin\Debug\Library.BusinessObjects.dll
+C:\Users\vinayb.CAMPSYS\Source\Repos\Library\Library.ApplicationConsole\bin\Debug\Library.Services.dll
+C:\Users\vinayb.CAMPSYS\Source\Repos\Library\Library.ApplicationConsole\bin\Debug\Library.Repository.dll
+C:\Users\vinayb.CAMPSYS\Source\Repos\Library\Library.ApplicationConsole\bin\Debug\Oracle.DataAccess.dll
+C:\Users\vinayb.CAMPSYS\Source\Repos\Library\Library.ApplicationConsole\bin\Debug\Library.BusinessObjects.pdb
+C:\Users\vinayb.CAMPSYS\Source\Repos\Library\Library.ApplicationConsole\bin\Debug\Library.Services.pdb
+C:\Users\vinayb.CAMPSYS\Source\Repos\Library\Library.ApplicationConsole\bin\Debug\Library.Repository.pdb
+C:\Users\vinayb.CAMPSYS\Source\Repos\Library\Library.ApplicationConsole\obj\Debug\Library.ApplicationConsole.csprojResolveAssemblyReference.cache
+C:\Users\vinayb.CAMPSYS\Source\Repos\Library\Library.ApplicationConsole\obj\Debug\Library.ApplicationConsole.csproj.CoreCompileInputs.cache
+C:\Users\vinayb.CAMPSYS\Source\Repos\Library\Library.ApplicationConsole\obj\Debug\Library.ApplicationConsole.exe
+C:\Users\vinayb.CAMPSYS\Source\Repos\Library\Library.ApplicationConsole\obj\Debug\Library.ApplicationConsole.pdb

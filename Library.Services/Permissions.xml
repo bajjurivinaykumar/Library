@@ -1,0 +1,32 @@
+<Authentication>
+
+  <Role name="Student">
+    <Permission>SearchBook</Permission> 
+    <Permission>RequestBook</Permission>
+    <Permission>ReturnBook</Permission>
+  </Role>
+  
+   
+  <Role name="Librarian">
+	  <Permission>AddBook</Permission>
+    <Permission>DeleteBook</Permission>
+    <Permission>SearchBookByName</Permission>
+    <Permission>SearchByPublishedBY</Permission>
+    <Permission>RenewBook</Permission>
+    <Permission>IssueBook</Permission>
+    <Permission>ReturnBook</Permission>
+	 <Permission>AddUser</Permission>
+    <Permission>RemoveUser</Permission>
+    <Permission>GetuserById</Permission>
+    <Permission>GetUserByName</Permission>
+	</Role>
+
+  <Role name="Staff">
+    <Permission>SearchBook</Permission>
+    <Permission>RequestBook</Permission>
+    <Permission>ReturnBook</Permission>
+  </Role>
+
+</Authentication>	
+
+    
