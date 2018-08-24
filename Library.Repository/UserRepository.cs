@@ -34,7 +34,7 @@ namespace Library.Repository
         public User GetUserByName(string name)
         {
             conn.Open();
-            SqlCommand command = new SqlCommand("select * from users where username = " + name);
+            SqlCommand command = new SqlCommand("select * from users where username = \'" + name +"\'");
             command.Connection = conn;
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
