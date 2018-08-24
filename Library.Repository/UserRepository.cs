@@ -1,7 +1,7 @@
 ﻿using Library.BusinessObjects;
 using System;
 using System.Data.SqlClient;
-
+using Library.BusinessObjects.enums;
 namespace Library.Repository
 {
     public class UserRepository : IUserRepository
@@ -22,23 +22,14 @@ namespace Library.Repository
                 userObj.name = (string)reader["name"];
                 userObj.address = (string)reader["address"];
                 userObj.username = (string)reader["username"];
-                userObj.roleId = (int)reader["roleId"];
+                userObj.roleName = (UserType)Enum.Parse(typeof(UserType), (string)reader["roleName"]);
                 userObj.issuedNumberBooks = (int)reader["issuedNumberBooks"];
             }
             conn.Close();
             return userObj;
         }
 
-        public void GetRole(int userId)
-        {
-            conn.Open();
-            SqlCommand command = new SqlCommand("select rolename from role");
-            command.Connection = conn;
-            SqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-            }
-        }
+    
 
         public User GetUserByName(string name)
         {
@@ -52,7 +43,7 @@ namespace Library.Repository
                 userObj.name = (string)reader["name"];
                 userObj.address = (string)reader["address"];
                 userObj.username = (string)reader["username"];
-                userObj.roleId = (int)reader["roleId"];
+                userObj.roleName = (UserType)Enum.Parse(typeof(UserType), (string)reader["roleName"]);
                 userObj.issuedNumberBooks = (int)reader["issuedNumberBooks"];
             }
             conn.Close();
@@ -85,8 +76,8 @@ namespace Library.Repository
             try
             {
                 conn.Open();
-                SqlCommand command = new SqlCommand("insert into users (name,roleId,address,username,password,createdon,IssuedNumberBooks) values " +
-                    "(\'" + user.name + "\'," + user.roleId + ",\'" + user.address + "\',\'" + user.username + "\',\'" + user.password + "\',getdate(),0);");
+                SqlCommand command = new SqlCommand("insert into users (name,roleName,address,username,password,createdon,IssuedNumberBooks) values " +
+                    "(\'" + user.name + "\',\'" + user.roleName + "\',\'" + user.address + "\',\'" + user.username + "\',\'" + user.password + "\',getdate(),0);");
                 command.Connection = conn;
                 int success = command.ExecuteNonQuery();
                 conn.Close();

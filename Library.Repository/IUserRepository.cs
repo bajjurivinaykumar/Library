@@ -12,6 +12,6 @@ namespace Library.Repository
 
         bool AddUser(User user);
 
-        void GetRole(int userId);
+        
     }
 }

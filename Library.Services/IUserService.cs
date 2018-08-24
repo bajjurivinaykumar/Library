@@ -12,6 +12,6 @@ namespace Library.Services
 
         User GetUserByName(string name);
 
-        void GetRole(int userId);
+        
     }
 }

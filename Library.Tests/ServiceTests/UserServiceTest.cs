@@ -12,7 +12,7 @@ namespace Library.Tests.ServiceTests
 {
     [TestClass]
     public class UserServiceTest
-    {/*
+    {
         [TestMethod]
         public void validGetUser()
         {
@@ -20,9 +20,12 @@ namespace Library.Tests.ServiceTests
             unityContainer.RegisterType<IUserService, UserService>();
             unityContainer.RegisterType<IUserRepository, UserRepository>();
             IUserService userService = unityContainer.Resolve<UserService>();
-            var data = userService.GetUser(8);
+
+
+            var data = userService.GetUserById(8);
             Assert.IsTrue(data.username == "vinay" );
+
         }
-        */
+        
     }
 }

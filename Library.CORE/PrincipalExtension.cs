@@ -1,4 +1,5 @@
 ﻿using Library.BusinessObjects;
+using Library.BusinessObjects.enums;
 using System.Security.Principal;
 
 namespace Library.core
@@ -11,7 +12,7 @@ namespace Library.core
             {
                 name = "VINAY",
                 userId = 8,
-                roleName = "librarian"
+                roleName = UserType.Librarian
             };
         }
     }

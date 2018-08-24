@@ -17,10 +17,7 @@ namespace Library.Services
 
         // UserRepository urep = new UserRepository();
 
-        public void GetRole(int userId)
-        {
-            _userRepository.GetRole(userId);
-        }
+       
 
         public bool AddUser(User newUser)
         {
@@ -40,7 +37,7 @@ namespace Library.Services
 
         public User GetUserById(int userId)
         {
-            if (as1.Authorize(loggedInUser.roleName, "GetUser"))
+            if (as1.Authorize(loggedInUser.roleName, "GetuserById"))
                 return _userRepository.GetUserById(userId);
             else
                 return null;
@@ -48,7 +45,7 @@ namespace Library.Services
 
         public User GetUserByName(string name)
         {
-            if (as1.Authorize(loggedInUser.roleName, "GetUser"))
+            if (as1.Authorize(loggedInUser.roleName, "GetUserByName"))
                 return _userRepository.GetUserByName(name);
             else
                 return null;

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Library.BusinessObjects.enums;
+using System;
+
 
 namespace Library.BusinessObjects
 {
@@ -9,9 +11,8 @@ namespace Library.BusinessObjects
         public string address { get; set; }
         public string username { get; set; }
         public string password { get; set; }
-        public int roleId { get; set; }
         public int issuedNumberBooks { get; set; }
         public DateTime createdOn { get; set; }
-        public string roleName { get; set; }
+        public UserType roleName { get; set; }
     }
 }

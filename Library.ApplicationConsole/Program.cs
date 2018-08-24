@@ -2,6 +2,7 @@
 using Library.Repository;
 using Library.Services;
 using Unity;
+using Library.BusinessObjects.enums;
 
 namespace Library.ApplicationConsole
 {
@@ -24,13 +25,13 @@ namespace Library.ApplicationConsole
             IUserService userService = unityContainer.Resolve<UserService>();
             IBookService bookService = unityContainer.Resolve<BookService>();
             //ITransactionService transactionService = unityContainer.Resolve<TransactionService>();
-            userService.GetRole(16);
+            
             User u = userService.GetUserById(16);
             User newUser = new User();
             newUser.address = "chandanagar";
             newUser.name = "test";
             newUser.password = "test";
-            newUser.roleId = 1;
+            newUser.roleName =  UserType.Librarian;
             newUser.username = "vinay";
             bool result = userService.AddUser(newUser);
 

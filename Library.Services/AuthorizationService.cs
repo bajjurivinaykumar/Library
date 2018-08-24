@@ -1,6 +1,7 @@
 ﻿using Library.BusinessObjects;
 using System.IO;
 using System.Linq;
+using Library.BusinessObjects.enums;
 using System.Xml.Serialization;
 
 namespace Library.Services
@@ -9,14 +10,14 @@ namespace Library.Services
     {
         private static Authentication permissionList;
 
-        public bool Authorize(string userType, string permission)
+        public bool Authorize( UserType  userType, string permission)
         {
             if (permissionList == null)
             {
                 ReadXML();
             }
 
-            return permissionList.Role.Where(r => r.name == userType).SingleOrDefault().Permission.Contains(permission);
+            return permissionList.Role.Where(r => r.name == userType.ToString()).SingleOrDefault().Permission.Contains(permission);
         }
 
         private void ReadXML()
