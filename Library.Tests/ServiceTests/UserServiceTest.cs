@@ -15,13 +15,13 @@ namespace Library.Tests.ServiceTests
     [TestClass]
     public class UserServiceTest
     {
-        
-        int deleteUserId=0;
-       string name = "UnitTestStudent" + DateTime.Now.ToString("yyyyMMddHHmmss");
+
+        int deleteUserId = 0;
+        string name = "Uni11111";
         IUserService userService;
         UnityContainer unityContainer;
 
-        public string Name { get => name; set => name = value; }
+        
 
         [TestInitialize]
         public void Initialize()
@@ -32,18 +32,7 @@ namespace Library.Tests.ServiceTests
             userService = unityContainer.Resolve<UserService>();
         }
 
-        [TestMethod]
-        public void GetValidUserById()
-        {            
-            var data = userService.GetUserById(8);
-            Assert.IsTrue(data.username == "vinay" );
-        }
-        [TestMethod]
-        public void GetInvalidUserById()
-        {
-            var data = userService.GetUserById(4545);
-            Assert.IsTrue(data.username ==null && data.password==null);
-        }
+      
         [TestMethod]
         public void AddUserStudent()
         {
@@ -58,50 +47,39 @@ namespace Library.Tests.ServiceTests
                 deleteUserId = userService.GetUserByName(name).userId;
             Assert.IsTrue(newUserCreated);
         }
-        /*
-       [TestMethod]
-       public void AddUserStaff()
-        {
-            User newUser = new User();
-            newUser.name = "UnitTestStaff";
-            newUser.password = "password";
-            newUser.roleName = UserType.Staff;
-            newUser.username = "UnitTestStaff";
-            newUser.address = "westernpearl";
-             Assert.IsTrue(userService.AddUser(newUser));
-        }
-        [TestMethod]
-        public void AddUserLibrarian()
-        {
-            User newUser = new User();
-            newUser.name = "UnitTestLibrarian";
-            newUser.password = "password";
-            newUser.roleName = UserType.Librarian;
-            newUser.username = "UnitTestLibrarian";
-            newUser.address = "westernpearl";
-           Assert.IsTrue(userService.AddUser(newUser));
-           }
-
-        */
         [TestMethod]
         public void AddInvalidUser()
         {
             User invalidUser = new User();
             Assert.IsFalse(userService.AddUser(invalidUser));
         }
+
         [TestMethod]
         public void GetValidUserByName()
         {
             var data = userService.GetUserByName(name);
-            Assert.IsTrue(data.username == name && data.roleName == UserType.Student);
+            Assert.IsTrue(data.name == name && data.roleName == UserType.Student);
         }
         [TestMethod]
         public void GetInValidUserByName()
         {
-            var data = userService.GetUserByName("Testkjlhog");
-            Assert.IsTrue(data.username == null && data.password ==null);
+            var data1 = userService.GetUserByName("Testkjlhog");
+            Assert.IsTrue(data1.name == null && data1.password == null);
         }
 
+        [TestMethod]
+        public void GetValidUserById()
+        {
+            var data2 = userService.GetUserById(userService.GetUserByName(name).userId);
+            Assert.IsTrue(data2.name == name);
+        }
+        [TestMethod]
+        public void GetInvalidUserById()
+        {
+            var data3 = userService.GetUserById(4545);
+            Assert.IsTrue(data3.username == null && data3.password == null);
+        }
+        
         [TestMethod]
         public void RemoveValidUser()
         {
@@ -117,6 +95,20 @@ namespace Library.Tests.ServiceTests
         {
             userService = null;
             unityContainer = null;
+        }
+        [TestMethod]
+        public void UserServiceTest1()
+        {
+            AddInvalidUser();
+            AddUserStudent();
+            GetValidUserByName();
+            GetInValidUserByName();
+            GetValidUserById();
+            GetInvalidUserById();
+            RemoveValidUser();
+            RemoveInValidUser();
+
+
         }
 
     }

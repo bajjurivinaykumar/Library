@@ -8,7 +8,7 @@ namespace Library.Repository
     {
         private SqlConnection conn = new SqlConnection("Data Source=PremierDBDev1;Initial Catalog=Library;Pooling=true;Min Pool Size = 1;Max Pool Size=100;Integrated Security=False;Persist Security Info=False;user id=sa;password=$elf!h0st;Connect Timeout=300");
 
-        private User userObj = new User();
+        private User userObj;
 
         public User GetUserById(int userId)
         {
@@ -16,6 +16,7 @@ namespace Library.Repository
             SqlCommand command = new SqlCommand("select * from users where userid = " + userId);
             command.Connection = conn;
             SqlDataReader reader = command.ExecuteReader();
+            userObj = new User();
             while (reader.Read())
             {
                 userObj.userId = (int)reader["userId"];
@@ -34,9 +35,10 @@ namespace Library.Repository
         public User GetUserByName(string name)
         {
             conn.Open();
-            SqlCommand command = new SqlCommand("select * from users where username = \'" + name +"\'");
+            SqlCommand command = new SqlCommand("select * from users where name = \'" + name +"\'");
             command.Connection = conn;
             SqlDataReader reader = command.ExecuteReader();
+            userObj = new User();
             while (reader.Read())
             {
                 userObj.userId = (int)reader["userId"];
@@ -84,8 +86,10 @@ namespace Library.Repository
             }
             catch (Exception ex)
             {
+                conn.Close();
                 return false;
             }
+           
             return true;
         }
     }
