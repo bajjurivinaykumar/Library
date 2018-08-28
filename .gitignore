@@ -12,3 +12,6 @@
 /Library.ApplicationConsole/obj/Debug
 /Library.Tests/bin/Debug
 /Library.Tests/obj/Debug
+/.vs/Library/DesignTimeBuild
+/Library.BusinessObjects/obj/Debug
+/Library.Repository/obj/Debug
