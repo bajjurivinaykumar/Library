@@ -19,11 +19,10 @@ namespace Library.Repository
             while (reader.Read())
             {
                 bookObj.name = (string)reader["name"];
-                bookObj.quantity = (int)reader["quantity"];
+                bookObj.quantity = reader.IsDBNull(4) ? 0 : (int)reader["quantity"];
                 bookObj.bookId = (int)reader["bookId"];
                 bookObj.publishedBy = (string)reader["publishedBy"];
-                bookObj.publisher = (string)reader["publisher"];
-                bookObj.bookType = (BookType)reader["bookType"];
+                bookObj.bookType = (BookType)reader["BookTypeID"];
             }
             conn.Close();
             return bookObj;
@@ -39,11 +38,10 @@ namespace Library.Repository
             while (reader.Read())
             {
                 bookObj.name = (string)reader["name"];
-                bookObj.quantity = (int)reader["quantity"];
+                bookObj.quantity = reader.IsDBNull(4) ? 0 : (int)reader["quantity"];
                 bookObj.bookId = (int)reader["bookId"];
                 bookObj.publishedBy = (string)reader["publishedBy"];
-                bookObj.publisher = (string)reader["publisher"];
-                bookObj.bookType = (BookType)reader["bookType"];
+                bookObj.bookType = (BookType)reader["bookTypeID"];
             }
             conn.Close();
             return bookObj;
@@ -53,8 +51,8 @@ namespace Library.Repository
         {
             conn.Open();
 
-            SqlCommand Command = new SqlCommand("Insert into Books(name,PublishedBy,Price,booktype)Values(\' " + book.name + "\'," +
-                "\'" + book.publishedBy + "\'," + book.price + "\'+" + book.bookType + ")");
+            SqlCommand Command = new SqlCommand("Insert into Books(name,PublishedBy,Price,booktypeID)Values(\'" + book.name + "\'," +
+                "\'" + book.publishedBy + "\'," + book.price + "," + book.bookType + ")");
             Command.Connection = conn;
             int success = Command.ExecuteNonQuery();
             if (success > 0)
