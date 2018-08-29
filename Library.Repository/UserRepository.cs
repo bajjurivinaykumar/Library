@@ -1,7 +1,8 @@
 ﻿using Library.BusinessObjects;
+using Library.BusinessObjects.enums;
 using System;
 using System.Data.SqlClient;
-using Library.BusinessObjects.enums;
+
 namespace Library.Repository
 {
     public class UserRepository : IUserRepository
@@ -30,12 +31,10 @@ namespace Library.Repository
             return userObj;
         }
 
-    
-
         public User GetUserByName(string name)
         {
             conn.Open();
-            SqlCommand command = new SqlCommand("select * from users where name = \'" + name +"\'");
+            SqlCommand command = new SqlCommand("select * from users where name = \'" + name + "\'");
             command.Connection = conn;
             SqlDataReader reader = command.ExecuteReader();
             userObj = new User();
@@ -89,7 +88,7 @@ namespace Library.Repository
                 conn.Close();
                 return false;
             }
-           
+
             return true;
         }
     }

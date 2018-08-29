@@ -1,27 +1,19 @@
-﻿using Library.Repository;
+﻿using Library.BusinessObjects;
+using Library.BusinessObjects.enums;
+using Library.Repository;
 using Library.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Unity;
-using Library.BusinessObjects;
-using Library.BusinessObjects.enums;
 
 namespace Library.Tests.ServiceTests
 {
     [TestClass]
     public class UserServiceTest
     {
-
-        int deleteUserId = 0;
-        string name = "Uni11111";
-        IUserService userService;
-        UnityContainer unityContainer;
-
-        
+        private int deleteUserId = 0;
+        private string name = "Uni11111";
+        private IUserService userService;
+        private UnityContainer unityContainer;
 
         [TestInitialize]
         public void Initialize()
@@ -32,7 +24,6 @@ namespace Library.Tests.ServiceTests
             userService = unityContainer.Resolve<UserService>();
         }
 
-      
         [TestMethod]
         public void AddUserStudent()
         {
@@ -47,6 +38,7 @@ namespace Library.Tests.ServiceTests
                 deleteUserId = userService.GetUserByName(name).userId;
             Assert.IsTrue(newUserCreated);
         }
+
         [TestMethod]
         public void AddInvalidUser()
         {
@@ -60,6 +52,7 @@ namespace Library.Tests.ServiceTests
             var data = userService.GetUserByName(name);
             Assert.IsTrue(data.name == name && data.roleName == UserType.Student);
         }
+
         [TestMethod]
         public void GetInValidUserByName()
         {
@@ -73,29 +66,33 @@ namespace Library.Tests.ServiceTests
             var data2 = userService.GetUserById(userService.GetUserByName(name).userId);
             Assert.IsTrue(data2.name == name);
         }
+
         [TestMethod]
         public void GetInvalidUserById()
         {
             var data3 = userService.GetUserById(4545);
             Assert.IsTrue(data3.username == null && data3.password == null);
         }
-        
+
         [TestMethod]
         public void RemoveValidUser()
         {
             Assert.IsTrue(userService.RemoveUser(deleteUserId));
         }
+
         [TestMethod]
         public void RemoveInValidUser()
         {
             Assert.IsFalse(userService.RemoveUser(1022));
         }
+
         [TestCleanup]
         public void CleanUp()
         {
             userService = null;
             unityContainer = null;
         }
+
         [TestMethod]
         public void UserServiceTest1()
         {
@@ -107,9 +104,6 @@ namespace Library.Tests.ServiceTests
             GetInvalidUserById();
             RemoveValidUser();
             RemoveInValidUser();
-
-
         }
-
     }
 }

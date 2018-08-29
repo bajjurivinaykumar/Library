@@ -11,7 +11,5 @@ namespace Library.Services
         User GetUserById(int userId);
 
         User GetUserByName(string name);
-
-        
     }
 }

@@ -11,7 +11,5 @@ namespace Library.Repository
         bool RemoveUser(int userId);
 
         bool AddUser(User user);
-
-        
     }
 }
