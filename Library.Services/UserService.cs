@@ -17,8 +17,6 @@ namespace Library.Services
 
         // UserRepository urep = new UserRepository();
 
-       
-
         public bool AddUser(User newUser)
         {
             if (as1.Authorize(loggedInUser.roleName, "AddUser"))

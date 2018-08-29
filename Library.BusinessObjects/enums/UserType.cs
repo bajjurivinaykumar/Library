@@ -3,7 +3,7 @@
     public enum UserType
     {
         Student = 1,
-        Librarian =2,
-        Staff =3
+        Librarian = 2,
+        Staff = 3
     }
 }

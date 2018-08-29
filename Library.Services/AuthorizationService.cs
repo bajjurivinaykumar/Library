@@ -1,7 +1,7 @@
 ﻿using Library.BusinessObjects;
+using Library.BusinessObjects.enums;
 using System.IO;
 using System.Linq;
-using Library.BusinessObjects.enums;
 using System.Xml.Serialization;
 
 namespace Library.Services
@@ -10,7 +10,7 @@ namespace Library.Services
     {
         private static Authentication permissionList;
 
-        public bool Authorize( UserType  userType, string permission)
+        public bool Authorize(UserType userType, string permission)
         {
             if (permissionList == null)
             {
