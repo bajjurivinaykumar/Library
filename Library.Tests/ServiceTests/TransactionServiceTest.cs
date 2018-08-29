@@ -27,11 +27,17 @@ namespace Library.Tests.ServiceTests
 
         }
 
-        [TestMethod]
-        public void issueBook()
-        {
-            Transaction trans = new Transaction();
+        //[TestMethod]
+        //public void IssueBook()
+        //{
+        //    Transaction trans = new Transaction();
+
+        //    trans.userId =63;
+        //    trans.bookId = 5;
+        //    var user = new User() { userId = 1, name = "vikas" };
+        //    Assert.IsTrue(Transactionservice.IssueBook(user, new Book() { bookId = 1 }));
 
         }
     }
+}
 }
