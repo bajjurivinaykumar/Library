@@ -35,8 +35,7 @@ namespace Library.Services
 
         public Book SearchBookByPublishedBy(string publishedBy)
         {
-            if (authorizationService.Authorize(loggedInUser.roleName, "SearchBookByPublishedBy"))
-
+            if (authorizationService.Authorize(loggedInUser.roleName, "SearchByPublishedBY"))
                 return _bookRepository.SearchByPublishedBy(publishedBy);
             else
                 return null;
