@@ -1,4 +1,5 @@
 ﻿using Library.BusinessObjects;
+using System.Collections.Generic;
 
 namespace Library.Services
 {
@@ -11,5 +12,10 @@ namespace Library.Services
         User GetUserById(int userId);
 
         User GetUserByName(string name);
+
+        List<string> GetIssuedBookName(int userid);
+
+
+    
     }
 }

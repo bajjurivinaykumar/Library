@@ -54,8 +54,8 @@ namespace Library.Repository
         {
             connection.Open();
 
-            SqlCommand Command = new SqlCommand("Insert into Books(name,PublishedBy,Price,booktype)Values(\'" + book.name + "\'," +
-                "\'" + book.publishedBy + "\'," + book.price + ",\'" + book.bookType + "\')");
+            SqlCommand Command = new SqlCommand("Insert into Books(name,PublishedBy,Quantity,AddedDate,Price,booktype)Values(\'" + book.name + "\'," +
+                "\'" + book.publishedBy +"\',"+ book.quantity  + ",getdate()," + book.price + ",\'" + book.bookType + "\')");
             Command.Connection = connection;
             int success = Command.ExecuteNonQuery();
             connection.Close();

@@ -4,7 +4,7 @@ namespace Library.Repository
 {
     public interface ITransactionRepository
     {
-        bool IssueBook(User user, Book book);
+        bool IssueBook(int userId, Book book);
 
         bool ReturnBook(int userid, Book book);
 

@@ -17,11 +17,11 @@ namespace Library.Services
 
         // private TransactionRepository trep = new TransactionRepository();
 
-        public bool IssueBook(User user, Book book)
+        public bool IssueBook(int UserId, Book book)
         {
             if (book.quantity > 0 && authorizationService.Authorize(loggedInUser.roleName, "IssueBook"))
             {
-                return _transactionRepository.IssueBook(user, book);
+                return _transactionRepository.IssueBook(UserId, book);
             }
             else return false;
         }
