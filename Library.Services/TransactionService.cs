@@ -6,20 +6,20 @@ namespace Library.Services
 {
     public class TransactionService : ITransactionService
     {
-        private AuthorizationService authorizationService = new AuthorizationService();
+        private IAuthorizationService _authorizationService;
         private User loggedInUser = System.Threading.Thread.CurrentPrincipal.GetLoggedInUser();
         private ITransactionRepository _transactionRepository;
 
-        public TransactionService(ITransactionRepository transactionRepository)
+        public TransactionService(ITransactionRepository transactionRepository, IAuthorizationService authorizationService)
         {
             _transactionRepository = transactionRepository;
+            _authorizationService = authorizationService;
         }
 
-        // private TransactionRepository trep = new TransactionRepository();
-
+        
         public bool IssueBook(User user, Book book)
         {
-            if (book.quantity > 0 && authorizationService.Authorize(loggedInUser.roleName, "IssueBook"))
+            if (book.quantity > 0 && _authorizationService.Authorize(loggedInUser.roleName, "IssueBook"))
             {
                 return _transactionRepository.IssueBook(user, book);
             }
@@ -28,7 +28,7 @@ namespace Library.Services
 
         public bool ReturnBook(int userid, Book book)
         {
-            if (authorizationService.Authorize(loggedInUser.roleName, "ReturnBook"))
+            if (_authorizationService.Authorize(loggedInUser.roleName, "ReturnBook"))
                 return _transactionRepository.ReturnBook(userid, book);
             else
                 return false;
@@ -37,7 +37,7 @@ namespace Library.Services
         public bool RenewBook(int userId, Book book)
 
         {
-            if (authorizationService.Authorize(loggedInUser.roleName, "RenewBook"))
+            if (_authorizationService.Authorize(loggedInUser.roleName, "RenewBook"))
                 return _transactionRepository.RenewBook(userId, book);
             else
                 return false;

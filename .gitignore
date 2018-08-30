@@ -15,3 +15,4 @@
 /.vs/Library/DesignTimeBuild
 /Library.BusinessObjects/obj/Debug
 /Library.Repository/obj/Debug
+/Library.Repository/bin/Debug
