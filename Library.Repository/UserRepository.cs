@@ -1,6 +1,7 @@
 ﻿using Library.BusinessObjects;
 using Library.BusinessObjects.enums;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace Library.Repository
@@ -90,6 +91,32 @@ namespace Library.Repository
             }
 
             return true;
+
+      
+        }
+        public List<string> GetIssuedBookName(int userID)
+        {
+            connection.Open();
+            SqlCommand Command = new SqlCommand("Select b.bookName from [Transaction] t, Book b where t.Status=0 and t.Bookid=b.BookID and t.UserId=  "+userID);
+            Command.Connection = connection;
+           SqlDataReader reader= Command.ExecuteReader();
+            List<string> list = null;
+            while (reader.Read())
+            {
+               
+               string  bookname = (string)reader["bookName"];
+
+                list.Add(bookname);
+
+            }
+            return list;
+            
+
+
+
+
+
+
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Library.BusinessObjects;
 using Library.core;
 using Library.Repository;
+using System.Collections.Generic;
 
 namespace Library.Services
 {
@@ -46,6 +47,14 @@ namespace Library.Services
         {
             if (_authorizationService.Authorize(loggedInUser.roleName, "GetUserByName"))
                 return _userRepository.GetUserByName(name);
+            else
+                return null;
+        }
+
+        public List<string> GetIssuedBookName(int userId)
+        {
+            if (as1.Authorize(loggedInUser.roleName, "GetIssuedBookName"))
+                return _userRepository.GetIssuedBookName(userId);
             else
                 return null;
         }

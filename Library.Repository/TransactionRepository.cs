@@ -10,8 +10,6 @@ namespace Library.Repository
     {
         private SqlConnection connection = new SqlConnection("Data Source=PremierDBDev1;Initial Catalog=Library;Pooling=true;Min Pool Size = 1;Max Pool Size=100;Integrated Security=False;Persist Security Info=False;user id=sa;password=$elf!h0st;Connect Timeout=300");
 
-        private BookRepository bookRepository = new BookRepository();
-
         public bool IssueBook(User user, Book book)
         {
             int success = 0;
@@ -22,11 +20,11 @@ namespace Library.Repository
                 command.Connection = connection;
                 success = command.ExecuteNonQuery();
 
-                connection.Close();
+                    connection.Close();
 
                 if (success > 0)
                 {
-                    bookRepository.EditQuantity(book.bookId, book.quantity - 1);
+                    br.EditQuantity(book.bookId, book.quantity - 1);
                     return true;
                 }
                 else
@@ -47,6 +45,7 @@ namespace Library.Repository
             command.CommandType = System.Data.CommandType.StoredProcedure;
             command.Parameters.Add(new SqlParameter("@userId", userid));
             command.Parameters.Add(new SqlParameter("@BookId", book.bookId));
+
             int success = command.ExecuteNonQuery();
             connection.Close();
 
