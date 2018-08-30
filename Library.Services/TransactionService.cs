@@ -17,11 +17,11 @@ namespace Library.Services
         }
 
         
-        public bool IssueBook(User user, Book book)
+        public bool IssueBook(int userId, Book book)
         {
             if (book.quantity > 0 && _authorizationService.Authorize(loggedInUser.roleName, "IssueBook"))
             {
-                return _transactionRepository.IssueBook(user, book);
+                return _transactionRepository.IssueBook(userId, book);
             }
             else return false;
         }

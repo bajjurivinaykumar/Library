@@ -53,7 +53,7 @@ namespace Library.Services
 
         public List<string> GetIssuedBookName(int userId)
         {
-            if (as1.Authorize(loggedInUser.roleName, "GetIssuedBookName"))
+            if (_authorizationService.Authorize(loggedInUser.roleName, "GetIssuedBookName"))
                 return _userRepository.GetIssuedBookName(userId);
             else
                 return null;
