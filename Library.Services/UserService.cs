@@ -7,20 +7,21 @@ namespace Library.Services
 {
     public class UserService : IUserService
     {
-        private AuthorizationService as1 = new AuthorizationService();
+        private IAuthorizationService _authorizationService;
         private User loggedInUser = System.Threading.Thread.CurrentPrincipal.GetLoggedInUser();
         private IUserRepository _userRepository;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, IAuthorizationService authorizationService)
         {
             _userRepository = userRepository;
+            _authorizationService = authorizationService;
         }
 
         // UserRepository urep = new UserRepository();
 
         public bool AddUser(User newUser)
         {
-            if (as1.Authorize(loggedInUser.roleName, "AddUser"))
+            if (_authorizationService.Authorize(loggedInUser.roleName, "AddUser"))
                 return _userRepository.AddUser(newUser);
             else
                 return false;
@@ -28,7 +29,7 @@ namespace Library.Services
 
         public bool RemoveUser(int userId)
         {
-            if (as1.Authorize(loggedInUser.roleName, "RemoveUser"))
+            if (_authorizationService.Authorize(loggedInUser.roleName, "RemoveUser"))
                 return _userRepository.RemoveUser(userId);
             else
                 return false;
@@ -36,7 +37,7 @@ namespace Library.Services
 
         public User GetUserById(int userId)
         {
-            if (as1.Authorize(loggedInUser.roleName, "GetuserById"))
+            if (_authorizationService.Authorize(loggedInUser.roleName, "GetuserById"))
                 return _userRepository.GetUserById(userId);
             else
                 return null;
@@ -44,7 +45,7 @@ namespace Library.Services
 
         public User GetUserByName(string name)
         {
-            if (as1.Authorize(loggedInUser.roleName, "GetUserByName"))
+            if (_authorizationService.Authorize(loggedInUser.roleName, "GetUserByName"))
                 return _userRepository.GetUserByName(name);
             else
                 return null;

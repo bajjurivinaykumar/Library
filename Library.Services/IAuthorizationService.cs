@@ -1,9 +1,10 @@
-﻿namespace Library.Services
+﻿using Library.BusinessObjects.enums;
+
+namespace Library.Services
 {
     public interface IAuthorizationService
     {
-        bool Authorize(string userType, string permission);
-
-        void ReadXML();
+        bool Authorize(UserType userType, string permission);
+        
     }
 }

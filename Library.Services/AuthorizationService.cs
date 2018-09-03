@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace Library.Services
 {
-    public class AuthorizationService
+    public class AuthorizationService : IAuthorizationService
     {
         private static Authentication permissionList;
 
@@ -19,6 +19,7 @@ namespace Library.Services
 
             return permissionList.Role.Where(r => r.name == userType.ToString()).SingleOrDefault().Permission.Contains(permission);
         }
+        
 
         private void ReadXML()
         {
@@ -26,5 +27,6 @@ namespace Library.Services
             StreamReader reader = new StreamReader("Permissions.xml");
             permissionList = (Authentication)ser.Deserialize(reader);
         }
+    
     }
 }

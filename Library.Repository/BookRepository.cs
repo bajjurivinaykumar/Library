@@ -8,7 +8,7 @@ namespace Library.Repository
     public class BookRepository : IBookRepository
     {
         private SqlConnection connection = new SqlConnection("Data Source=PremierDBDev1;Initial Catalog=Library;Pooling=true;Min Pool Size = 1;Max Pool Size=100;Integrated Security=False;Persist Security Info=False;user id=sa;password=$elf!h0st;Connect Timeout=300");
-
+      
         private Book bookObj;
 
         public Book SearchBookByName(string name)
