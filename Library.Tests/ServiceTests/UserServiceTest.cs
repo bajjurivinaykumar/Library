@@ -3,6 +3,7 @@ using Library.BusinessObjects.enums;
 using Library.Repository;
 using Library.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using Unity;
 
 namespace Library.Tests.ServiceTests
@@ -21,6 +22,7 @@ namespace Library.Tests.ServiceTests
             unityContainer = new UnityContainer();
             unityContainer.RegisterType<IUserService, UserService>();
             unityContainer.RegisterType<IUserRepository, UserRepository>();
+            unityContainer.RegisterType<IAuthorizationService, AuthorizationService>();
             userService = unityContainer.Resolve<UserService>();
         }
 
@@ -34,6 +36,8 @@ namespace Library.Tests.ServiceTests
             newUser.username = "UnitTestStudent";
             newUser.address = "westernpearl";
             bool newUserCreated = userService.AddUser(newUser);
+                deleteUserId = userService.GetUserByName(name).userId;
+             
             if (newUserCreated)
                 deleteUserId = userService.GetUserByName(name).userId;
             Assert.IsTrue(newUserCreated);
@@ -91,6 +95,12 @@ namespace Library.Tests.ServiceTests
         {
             userService = null;
             unityContainer = null;
+        }
+        [TestMethod]
+        public void GetAllUsers()
+        {
+           var data =  userService.GetAllUsers();
+            Assert.IsTrue(data.Count > 0);
         }
 
         [TestMethod]

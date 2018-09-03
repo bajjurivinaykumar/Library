@@ -16,7 +16,7 @@ namespace Library.Tests.ServiceTests
     [TestClass]
     public class BookServiceTest
     {
-        IBookService BookService;
+        IBookService bookService;
         int deleteBookId =0;
                 private UnityContainer unityContainer;
         [TestInitialize]
@@ -25,21 +25,22 @@ namespace Library.Tests.ServiceTests
              unityContainer = new UnityContainer();
             unityContainer.RegisterType<IBookService, BookService>();
             unityContainer.RegisterType<IBookRepository, BookRepository>();
-            BookService=unityContainer.Resolve<BookService>();
+            unityContainer.RegisterType<IAuthorizationService, AuthorizationService>();
+            bookService=unityContainer.Resolve<BookService>();
         }
 
         [TestMethod]
         public void AddBook()
         {
             
-            Book Addbook = new Book();
-            Addbook.name = "Ca";
-            Addbook.quantity = 25;
-            Addbook.price = 850;
-            Addbook.publishedBy = "Maru";
-            Addbook.publisher = "Dheeraj";
-            Addbook.bookType = BookType.Academics;
-            Assert.IsTrue(BookService.AddBook(Addbook));
+            Book addbook = new Book();
+            addbook.name = "Ca111";
+            addbook.quantity = 25;
+            addbook.price = 850;
+            addbook.publishedBy = "Maru11";
+            addbook.publisher = "Dheeraj";
+            addbook.bookType = BookType.Academics;
+            Assert.IsTrue(bookService.AddBook(addbook));
 
  
         }
@@ -48,7 +49,7 @@ namespace Library.Tests.ServiceTests
         public void SearchBookbyName()
         {
 
-            var name = BookService.SearchBookByName("Ca");
+            var name = bookService.SearchBookByName("Ca");
             deleteBookId = name.bookId;
             Assert.AreEqual("Ca", name.name);
 
@@ -57,67 +58,68 @@ namespace Library.Tests.ServiceTests
         [TestMethod]
         public void SearchBookByPublishedBy()
         {
-            var Publishedby = BookService.SearchBookByPublishedBy("Maru");
-            Assert.AreEqual("Maru", Publishedby.publishedBy);
+            var book = bookService.SearchBookByPublishedBy("Maru");
+            Assert.AreEqual("Maru", book.publishedBy);
         }
 
         [TestMethod]
         public void InvalidBookSearchedByName()
         {
-            var BookName = BookService.SearchBookByName("DaretoLive");
-            Assert.IsTrue(BookName.name==null);
+            var book = bookService.SearchBookByName("DaretoLive");
+            Assert.IsTrue(book.name==null);
         }
 
         [TestMethod]
         public void invalidBookByPublishedBy()
         {
-            var BookPublishedby = BookService.SearchBookByPublishedBy("Vicky");
-            Assert.IsTrue(BookPublishedby.publishedBy==null);
+            var book = bookService.SearchBookByPublishedBy("Vicky");
+            Assert.IsTrue(book.publishedBy==null);
         }
 
         [TestMethod]
         public void DeleteBook()
         {
-            Assert.IsTrue(BookService.DeleteBook(deleteBookId));
-        }
-        [TestMethod]
-        public void EditBook()
-        {
-            var Newquantity = BookService.EditQuantity(deleteBookId, 65);
-            Assert.IsTrue(Newquantity);
-
-        }
-        [TestMethod]
-        public void DeleteInvalidBook()
-        {
-            Assert.IsFalse(BookService.DeleteBook(69));
+            Assert.IsTrue(bookService.DeleteBook(deleteBookId));
         }
 
         
-            [TestMethod]
+        [TestMethod]
+        public void DeleteInvalidBook()
+        {
+            Assert.IsFalse(bookService.DeleteBook(69));
+        }
 
+        
+         [TestMethod]
         public void EditInvalidBook()
         {
-            var NewQuantity = BookService.EditQuantity(69, 25);
+            var NewQuantity = bookService.EditQuantity(69, 25);
             Assert.IsFalse(NewQuantity);
         }
         [TestCleanup]
         public void CleanUp()
         {
-            BookService = null;
+            bookService = null;
             unityContainer = null;
+        }
+
+        [TestMethod]
+        public void GetAllBooks()
+        {
+            var data = bookService.GetAllBooks();
+            Assert.IsTrue(data.Count > 0);
         }
 
 
         [TestMethod]
         public void BookServiceTest1()
         {
-            AddBook();
+            //AddBook();
+            GetAllBooks();
             SearchBookbyName();
             SearchBookByPublishedBy();
             InvalidBookSearchedByName();
             invalidBookByPublishedBy();
-            EditBook();
             EditInvalidBook();
             DeleteInvalidBook();
             DeleteBook();

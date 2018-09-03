@@ -3,6 +3,7 @@ using Library.BusinessObjects.enums;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
+using System;
 
 namespace Library.Services
 {
@@ -17,7 +18,10 @@ namespace Library.Services
                 ReadXML();
             }
 
-            return permissionList.Role.Where(r => r.name == userType.ToString()).SingleOrDefault().Permission.Contains(permission);
+          var isPermitted= permissionList.Role.Where(r => r.name == userType.ToString()).SingleOrDefault().Permission.Contains(permission);
+            if (!isPermitted)
+                throw new UnauthorizedAccessException(userType +" is not authorized to access this functionality"); 
+            return isPermitted;
         }
         
 

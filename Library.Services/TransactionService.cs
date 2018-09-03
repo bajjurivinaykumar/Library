@@ -19,28 +19,28 @@ namespace Library.Services
         
         public bool IssueBook(int userId, Book book)
         {
-            if (book.quantity > 0 && _authorizationService.Authorize(loggedInUser.roleName, "IssueBook"))
+            if (book.quantity > 0)
             {
+                _authorizationService.Authorize(loggedInUser.roleName, "IssueBook");
+            
                 return _transactionRepository.IssueBook(userId, book);
             }
-            else return false;
+            return false;
         }
 
         public bool ReturnBook(int userid, Book book)
         {
-            if (_authorizationService.Authorize(loggedInUser.roleName, "ReturnBook"))
+          _authorizationService.Authorize(loggedInUser.roleName, "ReturnBook");
                 return _transactionRepository.ReturnBook(userid, book);
-            else
-                return false;
+            
         }
 
         public bool RenewBook(int userId, Book book)
 
         {
-            if (_authorizationService.Authorize(loggedInUser.roleName, "RenewBook"))
+            _authorizationService.Authorize(loggedInUser.roleName, "RenewBook");
                 return _transactionRepository.RenewBook(userId, book);
-            else
-                return false;
+            
         }
     }
 }

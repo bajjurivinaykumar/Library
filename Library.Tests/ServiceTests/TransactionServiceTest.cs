@@ -23,21 +23,20 @@ namespace Library.Tests.ServiceTests
         [TestInitialize]
         public void Intialize()
         {
-            UnityContainer Container = new UnityContainer();
-            Container.RegisterType<ITransactionService, TransactionService>();
-            Container.RegisterType<ITransactionRepository, TransactionRepository>();
-            Container.RegisterType<IBookService, BookService>();
-            Container.RegisterType<IBookRepository, BookRepository>();
-            Transactionservice = Container.Resolve<TransactionService>();
-            bookService = Container.Resolve<BookService>();
+            UnityContainer unityContainer = new UnityContainer();
+            unityContainer.RegisterType<ITransactionService, TransactionService>();
+            unityContainer.RegisterType<ITransactionRepository, TransactionRepository>();
+            unityContainer.RegisterType<IBookService, BookService>();
+            unityContainer.RegisterType<IBookRepository, BookRepository>();
+            Transactionservice = unityContainer.Resolve<TransactionService>();
+            unityContainer.RegisterType<IAuthorizationService, AuthorizationService>();
+            bookService = unityContainer.Resolve<BookService>();
 
         }
 
         [TestMethod]
         public void IssueBook()
         {
-            Transaction trans = new Transaction();
-
             var book = bookService.SearchBookByName("Ca");
             Assert.IsTrue(Transactionservice.IssueBook(63, book));
 

@@ -1,4 +1,5 @@
 ﻿using Library.BusinessObjects;
+using System.Collections.Generic;
 
 namespace Library.Repository
 {
@@ -13,5 +14,7 @@ namespace Library.Repository
         bool DeleteBook(int bookId);
 
         Book SearchBookByName(string name);
+        List<Book> GetAllBooks();
+
     }
 }

@@ -111,12 +111,29 @@ namespace Library.Repository
             }
             return list;
             
-
-
-
-
-
-
+        }
+        public List<User> GetAllUsers()
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand("select * from users");
+            command.Connection = connection;
+            SqlDataReader reader = command.ExecuteReader();
+            
+            List<User> userList =new List<User>();
+            User userObj;
+            while (reader.Read())
+            {
+                userObj = new User();
+                userObj.userId = (int)reader["userId"];
+                userObj.name = (string)reader["name"];
+                userObj.address = (string)reader["address"];
+                userObj.username = (string)reader["username"];
+                userObj.roleName = (UserType)Enum.Parse(typeof(UserType), (string)reader["roleName"]);
+                userObj.issuedNumberBooks = (int)reader["issuedNumberBooks"];
+                userList.Add(userObj);
+            }
+            connection.Close();
+            return userList;
         }
     }
 }

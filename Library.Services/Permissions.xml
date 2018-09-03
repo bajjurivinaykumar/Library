@@ -10,7 +10,7 @@
 	  <Permission>AddBook</Permission>
     <Permission>DeleteBook</Permission>
     <Permission>SearchBookByName</Permission>
-    <Permission>SearchByPublishedBY</Permission>
+    <Permission>SearchByPublishedBy</Permission>
     <Permission>RenewBook</Permission>
     <Permission>IssueBook</Permission>
     <Permission>ReturnBook</Permission>
