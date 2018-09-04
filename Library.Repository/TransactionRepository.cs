@@ -20,13 +20,10 @@ namespace Library.Repository
                 command.Connection = connection;
                 success = command.ExecuteNonQuery();
 
-                    connection.Close();
+                connection.Close();
 
                 if (success > 0)
-                {
-                    bookRepository.EditQuantity(book.bookId, book.quantity - 1);
                     return true;
-                }
                 else
                     return false;
             }
@@ -48,17 +45,10 @@ namespace Library.Repository
 
             int success = command.ExecuteNonQuery();
             connection.Close();
-
-            if (success > 0)
-            {
-                bookRepository.EditQuantity(book.bookId, book.quantity + 1);
-
+            if (success>0)
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
 
         public bool RenewBook(int userId, Book book)

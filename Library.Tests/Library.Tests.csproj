@@ -85,6 +85,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RepositoryTests\UserRepositoryTests.cs" />
     <Compile Include="ServiceTests\BookServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceTests\TransactionServiceTest.cs" />

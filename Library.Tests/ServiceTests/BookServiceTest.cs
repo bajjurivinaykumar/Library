@@ -23,29 +23,7 @@ namespace Library.Tests.ServiceTests
         [TestInitialize]
         public void Initialize()
         {
-            unityContainer = new UnityContainer();
-            unityContainer.RegisterType<IBookService, BookService>();
-
-            Mock<IBookRepository> mockBookRepository = new Mock<IBookRepository>();
-            mockBookRepository.Setup(b => b.SearchBookByName(It.IsAny<string>())).Returns(new Book()
-            {
-                name = "Maru"
-            });
-            unityContainer.RegisterInstance<IBookRepository>(mockBookRepository.Object);
-
-            mockBookRepository.Setup(b => b.AddBook(new Book()
-            {
-                name = "Harry",
-                bookType = BookType.ScienceFiction,
-                quantity = 100,
-                dateOfPurchase = DateTime.Now,
-                price=100,
-                publishedBy ="J.K.Rowling",
-                publisher ="Test"
-
-            }));
-
-            mockBookRepository.Setup(b => b.SearchByPublishedBy(It.IsAny<string>())).Returns(new Book()
+            Book book = new Book()
             {
                 name = "Harry",
                 bookType = BookType.ScienceFiction,
@@ -54,14 +32,30 @@ namespace Library.Tests.ServiceTests
                 price = 100,
                 publishedBy = "J.K.Rowling",
                 publisher = "Test"
-            });
+            };
+            unityContainer = new UnityContainer();
+            unityContainer.RegisterType<IBookService, BookService>();
+
+            Mock<IBookRepository> mockBookRepository = new Mock<IBookRepository>();   
+            unityContainer.RegisterInstance<IBookRepository>(mockBookRepository.Object);
 
             Mock<IAuthorizationService> mockAuthorizationService = new Mock<IAuthorizationService>();
-            mockAuthorizationService.Setup(a => a.Authorize(UserType.Librarian, It.IsAny<string>())).Returns(true);
             unityContainer.RegisterInstance<IAuthorizationService>(mockAuthorizationService.Object);
-
-            
             bookService = unityContainer.Resolve<BookService>();
+
+            mockAuthorizationService.Setup(a => a.Authorize(UserType.Librarian, It.IsAny<string>())).Returns(true);
+            
+            mockBookRepository.Setup(b => b.SearchBookByName("Harry")).Returns(book);
+
+            mockBookRepository.Setup(b => b.AddBook(It.IsAny<Book>())).Returns(true);
+            
+            mockBookRepository.Setup(b => b.SearchByPublishedBy("J.K.Rowling")).Returns(book);
+
+            mockBookRepository.Setup(b => b.DeleteBook(100)).Returns(true);
+
+            mockBookRepository.Setup(b => b.GetAllBooks()).Returns(new List<Book>() {
+                book });
+
         }
 
         [TestMethod]
@@ -84,37 +78,37 @@ namespace Library.Tests.ServiceTests
         public void SearchBookbyName()
         {
 
-            var name = bookService.SearchBookByName("Ca111");
+            var name = bookService.SearchBookByName("Harry");
             deleteBookId = name.bookId;
-            Assert.AreEqual("Ca11", name.name);
+            Assert.AreEqual("Harry", name.name);
 
         }
 
         [TestMethod]
         public void SearchBookByPublishedBy()
         {
-            var book = bookService.SearchBookByPublishedBy("Maru");
-            Assert.AreEqual("Maru", book.publishedBy);
+            var book = bookService.SearchBookByPublishedBy("J.K.Rowling");
+            Assert.AreEqual("J.K.Rowling", book.publishedBy);
         }
 
         [TestMethod]
         public void InvalidBookSearchedByName()
         {
             var book = bookService.SearchBookByName("DaretoLive");
-            Assert.IsTrue(book.name == null);
+            Assert.IsTrue(book == null);
         }
 
         [TestMethod]
         public void invalidBookByPublishedBy()
         {
             var book = bookService.SearchBookByPublishedBy("Vicky");
-            Assert.IsTrue(book.publishedBy == null);
+            Assert.IsTrue(book == null);
         }
 
         [TestMethod]
         public void DeleteBook()
         {
-            Assert.IsTrue(bookService.DeleteBook(deleteBookId));
+            Assert.IsTrue(bookService.DeleteBook(100));
         }
 
 
@@ -145,20 +139,6 @@ namespace Library.Tests.ServiceTests
             Assert.IsTrue(data.Count > 0);
         }
 
-
-        [TestMethod]
-        public void BookServiceTest1()
-        {
-            //AddBook();
-            GetAllBooks();
-            SearchBookbyName();
-            SearchBookByPublishedBy();
-            InvalidBookSearchedByName();
-            invalidBookByPublishedBy();
-            EditInvalidBook();
-            DeleteInvalidBook();
-            DeleteBook();
-        }
     }
 
 

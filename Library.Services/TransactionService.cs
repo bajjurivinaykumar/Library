@@ -9,21 +9,25 @@ namespace Library.Services
         private IAuthorizationService _authorizationService;
         private User loggedInUser = System.Threading.Thread.CurrentPrincipal.GetLoggedInUser();
         private ITransactionRepository _transactionRepository;
+        private IBookRepository _bookRepository;
 
-        public TransactionService(ITransactionRepository transactionRepository, IAuthorizationService authorizationService)
+        public TransactionService(ITransactionRepository transactionRepository, IAuthorizationService authorizationService, IBookRepository bookRepository)
         {
             _transactionRepository = transactionRepository;
             _authorizationService = authorizationService;
+            _bookRepository = bookRepository;
+
         }
 
         
         public bool IssueBook(int userId, Book book)
         {
-            if (book.quantity > 0)
+            _authorizationService.Authorize(loggedInUser.roleName, "IssueBook");
+            if (book.quantity > 0 && _transactionRepository.IssueBook(userId, book)==true)
             {
-                _authorizationService.Authorize(loggedInUser.roleName, "IssueBook");
-            
-                return _transactionRepository.IssueBook(userId, book);
+
+                _bookRepository.EditQuantity(book.bookId, book.quantity - 1);
+                return true;
             }
             return false;
         }
@@ -31,7 +35,13 @@ namespace Library.Services
         public bool ReturnBook(int userid, Book book)
         {
           _authorizationService.Authorize(loggedInUser.roleName, "ReturnBook");
-                return _transactionRepository.ReturnBook(userid, book);
+            if (_transactionRepository.ReturnBook(userid, book) == true)
+            {
+                _bookRepository.EditQuantity(book.bookId, book.quantity + 1);
+                return true;
+                
+            }
+            return false;
             
         }
 
