@@ -1,4 +1,5 @@
 ﻿using Library.BusinessObjects;
+using System.Collections.Generic;
 
 namespace Library.Services
 {
@@ -13,5 +14,7 @@ namespace Library.Services
         bool EditQuantity(int BookID, int Quantity);
 
         bool DeleteBook(int BookID);
+
+        List<Book> GetAllBooks();
     }
 }

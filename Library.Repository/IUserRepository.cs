@@ -14,5 +14,6 @@ namespace Library.Repository
         bool AddUser(User user);
 
         List<string> GetIssuedBookName(int userId);
+        List<User> GetAllUsers();
     }
 }

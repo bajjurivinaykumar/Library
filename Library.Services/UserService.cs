@@ -1,6 +1,7 @@
 ﻿using Library.BusinessObjects;
 using Library.core;
 using Library.Repository;
+using System;
 using System.Collections.Generic;
 
 namespace Library.Services
@@ -21,42 +22,42 @@ namespace Library.Services
 
         public bool AddUser(User newUser)
         {
-            if (_authorizationService.Authorize(loggedInUser.roleName, "AddUser"))
+          _authorizationService.Authorize(loggedInUser.roleName, "AddUser");
                 return _userRepository.AddUser(newUser);
-            else
-                return false;
+            
         }
 
         public bool RemoveUser(int userId)
         {
-            if (_authorizationService.Authorize(loggedInUser.roleName, "RemoveUser"))
+            _authorizationService.Authorize(loggedInUser.roleName, "RemoveUser");
                 return _userRepository.RemoveUser(userId);
-            else
-                return false;
+           
         }
 
         public User GetUserById(int userId)
         {
-            if (_authorizationService.Authorize(loggedInUser.roleName, "GetuserById"))
+            _authorizationService.Authorize(loggedInUser.roleName, "GetuserById");
                 return _userRepository.GetUserById(userId);
-            else
-                return null;
+       
         }
 
         public User GetUserByName(string name)
         {
-            if (_authorizationService.Authorize(loggedInUser.roleName, "GetUserByName"))
-                return _userRepository.GetUserByName(name);
-            else
-                return null;
+            _authorizationService.Authorize(loggedInUser.roleName, "GetUserByName");
+            return _userRepository.GetUserByName(name);
+           
         }
 
         public List<string> GetIssuedBookName(int userId)
         {
-            if (as1.Authorize(loggedInUser.roleName, "GetIssuedBookName"))
+            _authorizationService.Authorize(loggedInUser.roleName, "GetIssuedBookName");
                 return _userRepository.GetIssuedBookName(userId);
-            else
-                return null;
+            
         }
+        public List<User> GetAllUsers()
+        {
+            return _userRepository.GetAllUsers();
+        }
+
     }
 }

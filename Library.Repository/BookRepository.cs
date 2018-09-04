@@ -2,6 +2,7 @@
 using Library.BusinessObjects.enums;
 using System.Data.SqlClient;
 using System;
+using System.Collections.Generic;
 
 namespace Library.Repository
 {
@@ -103,5 +104,27 @@ namespace Library.Repository
                 return false;
             }
         }
-    }
+        public List<Book> GetAllBooks()
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand("select bookid,name,booktype,quantity,publishedby from Books");
+            command.Connection = connection;
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Book> bookList = new List<Book>();
+            Book bookObj;
+            while (reader.Read())
+            {
+                bookObj = new Book();
+                bookObj.name = (string)reader["name"];
+                bookObj.quantity = reader.IsDBNull(4) ? 0 : (int)reader["quantity"];
+                bookObj.bookId = (int)reader["bookId"];
+                bookObj.publishedBy = (string)reader["publishedBy"];
+                bookObj.bookType = (BookType)Enum.Parse(typeof(BookType), (string)reader["BookType"]);
+                bookList.Add(bookObj);
+            }
+            connection.Close();
+            return bookList;
+        }
+        }
 }

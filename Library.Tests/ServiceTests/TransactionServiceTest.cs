@@ -17,29 +17,29 @@ namespace Library.Tests.ServiceTests
     {
 
 
-        ITransactionService Transactionservice;
+        ITransactionService transactionService;
         IBookService bookService;
 
         [TestInitialize]
         public void Intialize()
         {
-            UnityContainer Container = new UnityContainer();
-            Container.RegisterType<ITransactionService, TransactionService>();
-            Container.RegisterType<ITransactionRepository, TransactionRepository>();
-            Container.RegisterType<IBookService, BookService>();
-            Container.RegisterType<IBookRepository, BookRepository>();
-            Transactionservice = Container.Resolve<TransactionService>();
-            bookService = Container.Resolve<BookService>();
+            UnityContainer unityContainer = new UnityContainer();
+            unityContainer.RegisterType<ITransactionService, TransactionService>();
+            unityContainer.RegisterType<ITransactionRepository, TransactionRepository>();
+            unityContainer.RegisterType<IBookService, BookService>();
+            unityContainer.RegisterType<IBookRepository, BookRepository>();
+            unityContainer.RegisterType<IAuthorizationService, AuthorizationService>();
+            transactionService = unityContainer.Resolve<TransactionService>();
+            unityContainer.RegisterType<IAuthorizationService, AuthorizationService>();
+            bookService = unityContainer.Resolve<BookService>();
 
         }
 
         [TestMethod]
         public void IssueBook()
         {
-            Transaction trans = new Transaction();
-
             var book = bookService.SearchBookByName("Ca");
-            Assert.IsTrue(Transactionservice.IssueBook(63, book));
+            Assert.IsTrue(transactionService.IssueBook(63, book));
 
         }
 
@@ -47,7 +47,7 @@ namespace Library.Tests.ServiceTests
         public void InvalidIssueBook()
         {
             var book = bookService.SearchBookByName("Titanic");
-            Assert.IsFalse(Transactionservice.IssueBook(1,book));
+            Assert.IsFalse(transactionService.IssueBook(1,book));
 
         }
 
@@ -55,8 +55,8 @@ namespace Library.Tests.ServiceTests
         [TestMethod]
         public void ReturnBook()
         {
-            var book = bookService.SearchBookByName("Ca");
-            Assert.IsTrue(Transactionservice.ReturnBook(63,book));
+            var book = bookService.SearchBookByName("Ca11");
+            Assert.IsTrue(transactionService.ReturnBook(63,book));
 
         }
 
@@ -65,7 +65,7 @@ namespace Library.Tests.ServiceTests
         public void Invalidreturnbook()
         {
             var book = bookService.SearchBookByName("Titanic");
-            Assert.IsFalse(Transactionservice.ReturnBook(63,book));
+            Assert.IsFalse(transactionService.ReturnBook(63,book));
 
         }
 

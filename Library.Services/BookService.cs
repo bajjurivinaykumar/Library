@@ -1,6 +1,8 @@
 ﻿using Library.BusinessObjects;
 using Library.core;
 using Library.Repository;
+using System;
+using System.Collections.Generic;
 
 namespace Library.Services
 {
@@ -20,26 +22,23 @@ namespace Library.Services
         //BookRepository bookRepository = new BookRepository();
         public bool AddBook(Book book)
         {
-            if (_authorizationService.Authorize(loggedInUser.roleName, "AddBook"))
+            _authorizationService.Authorize(loggedInUser.roleName, "AddBook");
                 return _bookRepository.AddBook(book);
-            else
-                return false;
+           
         }
 
         public Book SearchBookByName(string name)
         {
-            if (_authorizationService.Authorize(loggedInUser.roleName, "SearchBookByName"))
+            _authorizationService.Authorize(loggedInUser.roleName, "SearchBookByName");
                 return _bookRepository.SearchBookByName(name);
-            else
-                return null;
+           
         }
 
         public Book SearchBookByPublishedBy(string publishedBy)
         {
-            if (_authorizationService.Authorize(loggedInUser.roleName, "SearchByPublishedBY"))
+            _authorizationService.Authorize(loggedInUser.roleName, "SearchByPublishedBy");
                 return _bookRepository.SearchByPublishedBy(publishedBy);
-            else
-                return null;
+          
         }
 
         public bool EditQuantity(int bookID, int quantity)
@@ -49,10 +48,13 @@ namespace Library.Services
 
         public bool DeleteBook(int bookID)
         {
-            if (_authorizationService.Authorize(loggedInUser.roleName, "DeleteBook"))
+            _authorizationService.Authorize(loggedInUser.roleName, "DeleteBook");
                 return _bookRepository.DeleteBook(bookID);
-            else
-                return false;
+            
+        }
+        public List<Book> GetAllBooks()
+        {
+            return _bookRepository.GetAllBooks();
         }
     }
 }

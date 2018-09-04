@@ -15,6 +15,8 @@ namespace Library.Services
 
         List<string> GetIssuedBookName(int userid);
 
+        List<User> GetAllUsers();
+
 
     
     }
