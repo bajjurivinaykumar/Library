@@ -15,5 +15,7 @@ namespace Library.Repository
 
         List<string> GetIssuedBookName(int userId);
         List<User> GetAllUsers();
+
+        int GetUserId();
     }
 }

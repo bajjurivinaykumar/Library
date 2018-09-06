@@ -16,5 +16,7 @@ namespace Library.Repository
         Book SearchBookByName(string name);
         List<Book> GetAllBooks();
 
+        Book GetBook();
+
     }
 }

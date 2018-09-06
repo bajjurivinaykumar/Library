@@ -126,5 +126,22 @@ namespace Library.Repository
             connection.Close();
             return bookList;
         }
+        public Book GetBook()
+        {
+            connection.Open();
+            bookObj = new Book();
+            
+            SqlCommand command = new SqlCommand("select top 1 * from Books order by AddedDate ");
+            command.Connection = connection;
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                bookObj.bookId = (int)reader["bookId"];
+                bookObj.quantity = (int)reader["quantity"];
+
+            }
+            connection.Close();
+            return bookObj;
+        }
         }
 }

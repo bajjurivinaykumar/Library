@@ -97,7 +97,7 @@ namespace Library.Repository
         public List<string> GetIssuedBookName(int userID)
         {
             connection.Open();
-            SqlCommand Command = new SqlCommand("Select b.bookName from [Transaction] t, Book b where t.Status=0 and t.Bookid=b.BookID and t.UserId=  "+userID);
+            SqlCommand Command = new SqlCommand("Select b.Name from [Transaction] t, Books b where t.Status=0 and t.Bookid=b.BookID and t.UserId=  "+userID);
             Command.Connection = connection;
            SqlDataReader reader= Command.ExecuteReader();
             List<string> list = null;
@@ -134,6 +134,21 @@ namespace Library.Repository
             }
             connection.Close();
             return userList;
+        }
+        public int GetUserId()
+        {
+            connection.Open();
+            int userId = 0;
+            SqlCommand command = new SqlCommand("select top 1 * from users ");
+            command.Connection = connection;
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                userId = (int)reader["userId"];
+
+            }
+            connection.Close();
+            return userId;
         }
     }
 }
