@@ -10,7 +10,7 @@ namespace Library.ApplicationConsole
     {
         private static void Main(string[] args)
         {
-            UnityContainer unityContainer = new UnityContainer();
+            /*UnityContainer unityContainer = new UnityContainer();
             unityContainer.RegisterType<IUserService, UserService>();
             unityContainer.RegisterType<IUserRepository, UserRepository>();
 
