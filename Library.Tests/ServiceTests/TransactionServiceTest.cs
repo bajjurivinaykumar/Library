@@ -9,6 +9,7 @@ using Library.Services;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unity;
+using Moq;
 
 namespace Library.Tests.ServiceTests
 {
@@ -32,6 +33,21 @@ namespace Library.Tests.ServiceTests
             transactionService = unityContainer.Resolve<TransactionService>();
             unityContainer.RegisterType<IAuthorizationService, AuthorizationService>();
             bookService = unityContainer.Resolve<BookService>();
+
+            Mock<ITransactionRepository> mocktrasactionrepository = new Mock<ITransactionRepository>();
+            unityContainer.RegisterInstance<ITransactionRepository>(mocktrasactionrepository.Object);
+            Mock<ITransactionService> mocktreasactionservices = new Mock<ITransactionService>();
+            unityContainer.RegisterInstance<ITransactionService>(mocktreasactionservices.Object);
+
+            transactionService = unityContainer.Resolve<TransactionService>();
+
+            mocktrasactionrepository.Setup(a => a.IssueBook(63, bookService.SearchBookByName("Harry"))).Returns(true);
+
+            mocktrasactionrepository.Setup(t => t.ReturnBook(63, bookService.SearchBookByName("Harry"))).Returns(true);
+
+            mocktrasactionrepository.Setup(t => t.RenewBook(63, bookService.SearchBookByName("Harry"))).Returns(true);
+            
+
 
         }
 

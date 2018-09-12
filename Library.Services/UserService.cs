@@ -12,11 +12,7 @@ namespace Library.Services
         private User loggedInUser = System.Threading.Thread.CurrentPrincipal.GetLoggedInUser();
         private IUserRepository _userRepository;
 
-        public UserService(IUserRepository userRepository, IAuthorizationService authorizationService)
-        {
-            _userRepository = userRepository;
-            _authorizationService = authorizationService;
-        }
+    
 
         // UserRepository urep = new UserRepository();
 
