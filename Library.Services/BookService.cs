@@ -1,45 +1,44 @@
 ﻿using Library.BusinessObjects;
 using Library.core;
 using Library.Repository;
+using System;
+using System.Collections.Generic;
 
 namespace Library.Services
 {
     public class BookService : IBookService
     {
-        private AuthorizationService authorizationService = new AuthorizationService();
+        private IAuthorizationService _authorizationService;// = new AuthorizationService();
         private User loggedInUser = System.Threading.Thread.CurrentPrincipal.GetLoggedInUser();
         private IBookRepository _bookRepository;
 
-        public BookService(IBookRepository bookRepository)
+        public BookService(IBookRepository bookRepository, IAuthorizationService authorizationService)
 
         {
             _bookRepository = bookRepository;
+            _authorizationService = authorizationService;
         }
 
         //BookRepository bookRepository = new BookRepository();
         public bool AddBook(Book book)
         {
-            if (authorizationService.Authorize(loggedInUser.roleName, "AddBook"))
+            _authorizationService.Authorize(loggedInUser.roleName, "AddBook");
                 return _bookRepository.AddBook(book);
-            else
-                return false;
+           
         }
 
         public Book SearchBookByName(string name)
         {
-            if (authorizationService.Authorize(loggedInUser.roleName, "SearchBookByName"))
+            _authorizationService.Authorize(loggedInUser.roleName, "SearchBookByName");
                 return _bookRepository.SearchBookByName(name);
-            else
-                return null;
+           
         }
 
         public Book SearchBookByPublishedBy(string publishedBy)
         {
-            if (authorizationService.Authorize(loggedInUser.roleName, "SearchBookByPublishedBy"))
-
+            _authorizationService.Authorize(loggedInUser.roleName, "SearchByPublishedBy");
                 return _bookRepository.SearchByPublishedBy(publishedBy);
-            else
-                return null;
+          
         }
 
         public bool EditQuantity(int bookID, int quantity)
@@ -49,10 +48,13 @@ namespace Library.Services
 
         public bool DeleteBook(int bookID)
         {
-            if (authorizationService.Authorize(loggedInUser.roleName, "DeleteBook"))
+            _authorizationService.Authorize(loggedInUser.roleName, "DeleteBook");
                 return _bookRepository.DeleteBook(bookID);
-            else
-                return false;
+            
+        }
+        public List<Book> GetAllBooks()
+        {
+            return _bookRepository.GetAllBooks();
         }
     }
 }

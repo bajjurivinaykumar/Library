@@ -2,7 +2,7 @@
 
 namespace Library.BusinessObjects
 {
-    internal class Transaction
+    public class Transaction
     {
         public int transactionId { get; set; }
         public int userId { get; set; }

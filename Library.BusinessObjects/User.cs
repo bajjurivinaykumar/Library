@@ -1,7 +1,6 @@
 ﻿using Library.BusinessObjects.enums;
 using System;
 
-
 namespace Library.BusinessObjects
 {
     public class User

@@ -1,24 +1,29 @@
 ﻿using Library.BusinessObjects;
+using Library.BusinessObjects.enums;
 using System.IO;
 using System.Linq;
-using Library.BusinessObjects.enums;
 using System.Xml.Serialization;
+using System;
 
 namespace Library.Services
 {
-    public class AuthorizationService
+    public class AuthorizationService : IAuthorizationService
     {
         private static Authentication permissionList;
 
-        public bool Authorize( UserType  userType, string permission)
+        public bool Authorize(UserType userType, string permission)
         {
             if (permissionList == null)
             {
                 ReadXML();
             }
 
-            return permissionList.Role.Where(r => r.name == userType.ToString()).SingleOrDefault().Permission.Contains(permission);
+          var isPermitted= permissionList.Role.Where(r => r.name == userType.ToString()).SingleOrDefault().Permission.Contains(permission);
+            if (!isPermitted)
+                throw new UnauthorizedAccessException(userType +" is not authorized to access this functionality"); 
+            return isPermitted;
         }
+        
 
         private void ReadXML()
         {
@@ -26,5 +31,6 @@ namespace Library.Services
             StreamReader reader = new StreamReader("Permissions.xml");
             permissionList = (Authentication)ser.Deserialize(reader);
         }
+    
     }
 }

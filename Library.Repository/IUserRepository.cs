@@ -1,4 +1,5 @@
 ﻿using Library.BusinessObjects;
+using System.Collections.Generic;
 
 namespace Library.Repository
 {
@@ -12,6 +13,9 @@ namespace Library.Repository
 
         bool AddUser(User user);
 
-        
+        List<string> GetIssuedBookName(int userId);
+        List<User> GetAllUsers();
+
+        int GetUserId();
     }
 }

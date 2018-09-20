@@ -1,17 +1,16 @@
 <Authentication>
 
   <Role name="Student">
-    <Permission>SearchBook</Permission> 
+    <Permission>SearchBook</Permission>
     <Permission>RequestBook</Permission>
     <Permission>ReturnBook</Permission>
   </Role>
-  
-   
+
   <Role name="Librarian">
 	  <Permission>AddBook</Permission>
     <Permission>DeleteBook</Permission>
     <Permission>SearchBookByName</Permission>
-    <Permission>SearchByPublishedBY</Permission>
+    <Permission>SearchByPublishedBy</Permission>
     <Permission>RenewBook</Permission>
     <Permission>IssueBook</Permission>
     <Permission>ReturnBook</Permission>
@@ -26,7 +25,4 @@
     <Permission>RequestBook</Permission>
     <Permission>ReturnBook</Permission>
   </Role>
-
-</Authentication>	
-
-    
+</Authentication>

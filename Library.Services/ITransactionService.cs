@@ -4,7 +4,7 @@ namespace Library.Services
 {
     public interface ITransactionService
     {
-        bool IssueBook(User u, Book b);
+        bool IssueBook(int UserID, Book b);
 
         bool ReturnBook(int userid, Book book);
 

@@ -6,41 +6,51 @@ namespace Library.Services
 {
     public class TransactionService : ITransactionService
     {
-        private AuthorizationService authorizationService = new AuthorizationService();
+        private IAuthorizationService _authorizationService;
         private User loggedInUser = System.Threading.Thread.CurrentPrincipal.GetLoggedInUser();
         private ITransactionRepository _transactionRepository;
+        private IBookRepository _bookRepository;
 
-        public TransactionService(ITransactionRepository transactionRepository)
+        public TransactionService(ITransactionRepository transactionRepository, IAuthorizationService authorizationService, IBookRepository bookRepository)
         {
             _transactionRepository = transactionRepository;
+            _authorizationService = authorizationService;
+            _bookRepository = bookRepository;
+
         }
 
-        // private TransactionRepository trep = new TransactionRepository();
-
-        public bool IssueBook(User user, Book book)
+        
+        public bool IssueBook(int userId, Book book)
         {
-            if (book.quantity > 0 && authorizationService.Authorize(loggedInUser.roleName, "IssueBook"))
+            _authorizationService.Authorize(loggedInUser.roleName, "IssueBook");
+            if (book.quantity > 0 && _transactionRepository.IssueBook(userId, book)==true)
             {
-                return _transactionRepository.IssueBook(user, book);
+
+                _bookRepository.EditQuantity(book.bookId, book.quantity - 1);
+                return true;
             }
-            else return false;
+            return false;
         }
 
         public bool ReturnBook(int userid, Book book)
         {
-            if (authorizationService.Authorize(loggedInUser.roleName, "ReturnBook"))
-                return _transactionRepository.ReturnBook(userid, book);
-            else
-                return false;
+          _authorizationService.Authorize(loggedInUser.roleName, "ReturnBook");
+            if (_transactionRepository.ReturnBook(userid, book) == true)
+            {
+                _bookRepository.EditQuantity(book.bookId, book.quantity + 1);
+                return true;
+                
+            }
+            return false;
+            
         }
 
         public bool RenewBook(int userId, Book book)
 
         {
-            if (authorizationService.Authorize(loggedInUser.roleName, "RenewBook"))
+            _authorizationService.Authorize(loggedInUser.roleName, "RenewBook");
                 return _transactionRepository.RenewBook(userId, book);
-            else
-                return false;
+            
         }
     }
 }
